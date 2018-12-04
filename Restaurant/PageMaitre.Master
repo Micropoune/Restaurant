@@ -1,0 +1,29 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="PageMaitre.Master.cs" Inherits="Restaurant.Site1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Restaurant Concept</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="entete">
+            <asp:ContentPlaceHolder ID="Titre" runat="server">
+				 <div>
+					 <asp:image class="logo"  runat="server" Height="60px" ImageUrl="logo.png"></asp:image>
+					 <h1>Restaurant Concept</h1>
+				 </div>
+			</asp:ContentPlaceHolder>
+        </div>
+		<div class="contenu">
+			<asp:ContentPlaceHolder ID="Contenu" runat="server">
+
+			</asp:ContentPlaceHolder>
+		</div>
+    </form>
+</body>
+</html>
