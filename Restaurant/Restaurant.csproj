@@ -111,6 +111,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BDResto.cs" />
+    <Compile Include="CreationMenu.aspx.cs">
+      <DependentUpon>CreationMenu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CreationMenu.aspx.designer.cs">
+      <DependentUpon>CreationMenu.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -126,11 +134,13 @@
     <Compile Include="PageMaitre.Master.designer.cs">
       <DependentUpon>PageMaitre.Master</DependentUpon>
     </Compile>
+    <Compile Include="RestoConceptDataContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CreationMenu.aspx" />
     <Content Include="Default.aspx" />
     <None Include="packages.config" />
     <Content Include="PageMaitre.Master" />
