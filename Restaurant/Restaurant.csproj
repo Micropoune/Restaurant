@@ -112,6 +112,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BDResto.cs" />
+    <Compile Include="Client.cs" />
     <Compile Include="CreationMenu.aspx.cs">
       <DependentUpon>CreationMenu.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -135,6 +136,7 @@
       <DependentUpon>PageMaitre.Master</DependentUpon>
     </Compile>
     <Compile Include="RestoConceptDataContext.cs" />
+    <Compile Include="Utilisateur.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
