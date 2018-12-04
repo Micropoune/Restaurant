@@ -61,5 +61,12 @@ namespace Restaurant
         {
 
         }
+
+        public void deconnecter()
+        {
+
+        }
+
+        
     }
 }
