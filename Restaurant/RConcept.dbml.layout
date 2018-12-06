@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 14, 11.75" name="RConcept">
+  <DataContextMoniker Name="/RConceptDataContext" />
+  <nestedChildShapes>
+    <classShape Id="c65ed2a6-945b-47c0-b3bf-ae722948fe05" absoluteBounds="0.75, 4.5, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/RConceptDataContext/adresses" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f97beecf-4faf-4583-b077-fc403037505d" absoluteBounds="0.765, 4.96, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0eb4b822-249e-4100-826d-97b83e63be64" absoluteBounds="0.75, 1.875, 2, 1.1939925130208335">
+      <DataClassMoniker Name="/RConceptDataContext/typecomptes" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d75c700d-62fc-4878-a08c-9f126d005f76" absoluteBounds="0.765, 2.335, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7f998b09-ef9e-4081-9c78-c8ced6c6b74b" absoluteBounds="6.25, 9.875, 2, 1.1939925130208344">
+      <DataClassMoniker Name="/RConceptDataContext/categories" />
+      <nestedChildShapes>
+        <elementListCompartment Id="aabb5378-69cd-46d7-9732-c20e7b042775" absoluteBounds="6.265, 10.335, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="07508f91-b9cb-460b-bd32-136bb40e6e86" absoluteBounds="9, 1.375, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/RConceptDataContext/commandes" />
+      <nestedChildShapes>
+        <elementListCompartment Id="68bc246b-e1da-4964-95f9-f552008652cc" absoluteBounds="9.015, 1.835, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="82c3055c-911f-4dcf-9dfe-2ba9d7ea8525" absoluteBounds="3.5, 1, 2, 2.9247054036458326">
+      <DataClassMoniker Name="/RConceptDataContext/comptes" />
+      <nestedChildShapes>
+        <elementListCompartment Id="fb7e200a-1e97-4327-9b57-a9a42af66d2f" absoluteBounds="3.515, 1.46, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="efe49281-3365-445a-9e32-fe1c896d84ec" absoluteBounds="6.25, 2.5, 2, 1.1939925130208335">
+      <DataClassMoniker Name="/RConceptDataContext/etatcommandes" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9ce9d4bd-319d-4386-ba87-a83039a57197" absoluteBounds="6.265, 2.96, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="49264925-e52b-4e85-841d-c67cc0a65806" absoluteBounds="11.75, 1.875, 2, 1.3862939453125003">
+      <DataClassMoniker Name="/RConceptDataContext/items_commande" />
+      <nestedChildShapes>
+        <elementListCompartment Id="99314c8c-9994-4e17-bab2-7e8a6a23a632" absoluteBounds="11.765, 2.335, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2c536d63-3940-473d-af7d-c57b8591f003" absoluteBounds="9, 4.875, 2, 1.3862939453125005">
+      <DataClassMoniker Name="/RConceptDataContext/menu_produits" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ee65a3a9-7720-4eec-9b31-00de59acb423" absoluteBounds="9.015, 5.335, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="97a4db05-a1df-457f-80d9-77a3bae52c86" absoluteBounds="6.25, 4.625, 2, 1.7708968098958327">
+      <DataClassMoniker Name="/RConceptDataContext/menus" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4e1adfd2-5c62-462c-b5b5-24099d8dd2f7" absoluteBounds="6.265, 5.085, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="5181db41-55d7-4c3b-b48c-4652fbe5cf00" absoluteBounds="6.25, 7.375, 2, 1.1939925130208344">
+      <DataClassMoniker Name="/RConceptDataContext/modespaiement" />
+      <nestedChildShapes>
+        <elementListCompartment Id="cd62c486-15e8-40ac-bf9b-b08e77e848c5" absoluteBounds="6.265, 7.835, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="767a3ca4-03cc-41a2-b79a-1b68c809c873" absoluteBounds="9, 9.5, 2, 1.9631982421874987">
+      <DataClassMoniker Name="/RConceptDataContext/produits" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d3581e09-2ed5-402c-9311-c10f3437d32f" absoluteBounds="9.015, 9.96, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="8f0c9f05-0347-48da-9c0b-60f6ea1ba365" absoluteBounds="3.5, 4.75, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/RConceptDataContext/restaurants" />
+      <nestedChildShapes>
+        <elementListCompartment Id="18043ba4-5565-41a7-97f4-5eef1ce1ef61" absoluteBounds="3.515, 5.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 5.57774983723958); (3.25 : 5.57774983723958); (3.25 : 4.375); (8.41666666666667 : 4.375 : JumpStart); (8.58333333333333 : 4.375 : JumpEnd); (8.69791666666667 : 4.375 : JumpStart); (8.86458333333333 : 4.375 : JumpEnd); (10 : 4.375); (10 : 3.72280110677083)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/RConceptDataContext/adresses/adresses_commandes" />
+      <nodes>
+        <classShapeMoniker Id="c65ed2a6-945b-47c0-b3bf-ae722948fe05" />
+        <classShapeMoniker Id="07508f91-b9cb-460b-bd32-136bb40e6e86" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 1.90625); (9 : 1.90625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/RConceptDataContext/comptes/comptes_commandes" />
+      <nodes>
+        <classShapeMoniker Id="82c3055c-911f-4dcf-9dfe-2ba9d7ea8525" />
+        <classShapeMoniker Id="07508f91-b9cb-460b-bd32-136bb40e6e86" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 4.50153746153846); (3.125 : 4.12653746153846); (3.125 : 4.29970540364583); (3.5 : 3.92470540364583)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/RConceptDataContext/adresses/adresses_comptes" />
+      <nodes>
+        <classShapeMoniker Id="c65ed2a6-945b-47c0-b3bf-ae722948fe05" />
+        <classShapeMoniker Id="82c3055c-911f-4dcf-9dfe-2ba9d7ea8525" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 2.47199625651042); (3.5 : 2.47199625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/RConceptDataContext/typecomptes/typecomptes_comptes" />
+      <nodes>
+        <classShapeMoniker Id="0eb4b822-249e-4100-826d-97b83e63be64" />
+        <classShapeMoniker Id="82c3055c-911f-4dcf-9dfe-2ba9d7ea8525" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.25 : 3.09699625651042); (8.54166666666667 : 3.09699625651042 : JumpStart); (8.70833333333333 : 3.09699625651042 : JumpEnd); (9 : 3.09699625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/RConceptDataContext/etatcommandes/etatcommandes_commandes" />
+      <nodes>
+        <classShapeMoniker Id="efe49281-3365-445a-9e32-fe1c896d84ec" />
+        <classShapeMoniker Id="07508f91-b9cb-460b-bd32-136bb40e6e86" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11 : 2.56814697265625); (11.75 : 2.56814697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/RConceptDataContext/commandes/commandes_items_commande" />
+      <nodes>
+        <classShapeMoniker Id="07508f91-b9cb-460b-bd32-136bb40e6e86" />
+        <classShapeMoniker Id="49264925-e52b-4e85-841d-c67cc0a65806" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.25 : 4.625); (8.625 : 4.25); (8.625 : 2.50162312825521); (9 : 2.50162312825521)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/RConceptDataContext/menus/menus_commandes" />
+      <nodes>
+        <classShapeMoniker Id="97a4db05-a1df-457f-80d9-77a3bae52c86" />
+        <classShapeMoniker Id="07508f91-b9cb-460b-bd32-136bb40e6e86" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.25 : 5.56814697265625); (8.69791666666667 : 5.56814697265625 : JumpStart); (8.86458333333333 : 5.56814697265625 : JumpEnd); (9 : 5.56814697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/RConceptDataContext/menus/menus_menu_produits" />
+      <nodes>
+        <classShapeMoniker Id="97a4db05-a1df-457f-80d9-77a3bae52c86" />
+        <classShapeMoniker Id="2c536d63-3940-473d-af7d-c57b8591f003" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.25 : 7.40714495227364); (8.78125 : 6.87589495227364); (8.78125 : 3.44115068164063); (9 : 3.44115068164063)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/RConceptDataContext/modespaiement/modespaiement_commandes" />
+      <nodes>
+        <classShapeMoniker Id="5181db41-55d7-4c3b-b48c-4652fbe5cf00" />
+        <classShapeMoniker Id="07508f91-b9cb-460b-bd32-136bb40e6e86" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11 : 10.4815991210937); (12.75 : 10.4815991210937); (12.75 : 3.2612939453125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/RConceptDataContext/produits/produits_items_commande" />
+      <nodes>
+        <classShapeMoniker Id="767a3ca4-03cc-41a2-b79a-1b68c809c873" />
+        <classShapeMoniker Id="49264925-e52b-4e85-841d-c67cc0a65806" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(10 : 9.5); (10 : 6.2612939453125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/RConceptDataContext/produits/produits_menu_produits" />
+      <nodes>
+        <classShapeMoniker Id="767a3ca4-03cc-41a2-b79a-1b68c809c873" />
+        <classShapeMoniker Id="2c536d63-3940-473d-af7d-c57b8591f003" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.25 : 10.4719962565104); (9 : 10.4719962565104)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/RConceptDataContext/categories/categories_produits" />
+      <nodes>
+        <classShapeMoniker Id="7f998b09-ef9e-4081-9c78-c8ced6c6b74b" />
+        <classShapeMoniker Id="767a3ca4-03cc-41a2-b79a-1b68c809c873" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 5.53929768880208); (6.25 : 5.53929768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/RConceptDataContext/restaurants/restaurants_menus" />
+      <nodes>
+        <classShapeMoniker Id="8f0c9f05-0347-48da-9c0b-60f6ea1ba365" />
+        <classShapeMoniker Id="97a4db05-a1df-457f-80d9-77a3bae52c86" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 5.10137491861979); (3.16666666666667 : 5.10137491861979 : JumpStart); (3.33333333333333 : 5.10137491861979 : JumpEnd); (3.5 : 5.10137491861979)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/RConceptDataContext/adresses/adresses_restaurants" />
+      <nodes>
+        <classShapeMoniker Id="c65ed2a6-945b-47c0-b3bf-ae722948fe05" />
+        <classShapeMoniker Id="8f0c9f05-0347-48da-9c0b-60f6ea1ba365" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

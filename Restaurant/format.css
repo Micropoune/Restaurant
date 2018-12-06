@@ -1,0 +1,25 @@
+﻿
+.entete {
+	
+	height: 80px;
+	margin-top:0px;
+	margin-left:0px;
+	margin-right:0px;
+
+}
+h1 {
+	font-family: Roboto;
+	text-align:center;
+}
+.titreEntete {
+	display: inline-block;
+}
+.logo {
+	padding:10px;
+}
+.contenu {
+
+}
+
+
+

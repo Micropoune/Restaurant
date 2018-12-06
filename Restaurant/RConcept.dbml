@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="RestaurantConcept" Class="RConceptDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\RestaurantConcept.mdf;Integrated Security=True;Connect Timeout=30" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.adresses" Member="adresses">
+    <Type Name="adresses">
+      <Column Name="idAdrs" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="noCvq" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Rue" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ville" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="province" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="codePostal" Type="System.String" DbType="Char(7)" CanBeNull="true" />
+      <Column Name="telephone" Type="System.String" DbType="Char(15)" CanBeNull="true" />
+      <Association Name="adresses_commandes" Member="commandes" ThisKey="idAdrs" OtherKey="noAdrs" Type="commandes" />
+      <Association Name="adresses_comptes" Member="comptes" ThisKey="idAdrs" OtherKey="noAdrs" Type="comptes" />
+      <Association Name="adresses_restaurants" Member="restaurants" ThisKey="idAdrs" OtherKey="idAdrs" Type="restaurants" />
+    </Type>
+  </Table>
+  <Table Name="dbo.typecomptes" Member="typecomptes">
+    <Type Name="typecomptes">
+      <Column Name="idtype" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nomType" Type="System.String" DbType="VarChar(35) NOT NULL" CanBeNull="false" />
+      <Association Name="typecomptes_comptes" Member="comptes" ThisKey="idtype" OtherKey="notpCmpt" Type="comptes" />
+    </Type>
+  </Table>
+  <Table Name="dbo.categories" Member="categories">
+    <Type Name="categories">
+      <Column Name="idCategorie" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nomCategorie" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Association Name="categories_produits" Member="produits" ThisKey="idCategorie" OtherKey="idCategorie" Type="produits" />
+    </Type>
+  </Table>
+  <Table Name="dbo.commandes" Member="commandes">
+    <Type Name="commandes">
+      <Column Name="idCommande" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="datecommande" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="idetat" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idModePaiement" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="noClient" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="noAdrs" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idMenu" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="commentaires" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Association Name="commandes_items_commande" Member="items_commande" ThisKey="idCommande" OtherKey="noCommande" Type="items_commande" />
+      <Association Name="adresses_commandes" Member="adresses" ThisKey="noAdrs" OtherKey="idAdrs" Type="adresses" IsForeignKey="true" />
+      <Association Name="comptes_commandes" Member="comptes" ThisKey="noClient" OtherKey="noCompte" Type="comptes" IsForeignKey="true" />
+      <Association Name="etatcommandes_commandes" Member="etatcommandes" ThisKey="idetat" OtherKey="idEtat" Type="etatcommandes" IsForeignKey="true" />
+      <Association Name="menus_commandes" Member="menus" ThisKey="idMenu" OtherKey="idMenu" Type="menus" IsForeignKey="true" />
+      <Association Name="modespaiement_commandes" Member="modespaiement" ThisKey="idModePaiement" OtherKey="idMode" Type="modespaiement" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.comptes" Member="comptes">
+    <Type Name="comptes">
+      <Column Name="noCompte" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="notpCmpt" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="prenom" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="nom" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="noAdrs" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="telephone" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Courriel" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="nomUtilisateur" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="motPasse" Type="System.String" DbType="VarChar(40) NOT NULL" CanBeNull="false" />
+      <Column Name="Actif" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="commentaires" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Association Name="comptes_commandes" Member="commandes" ThisKey="noCompte" OtherKey="noClient" Type="commandes" />
+      <Association Name="adresses_comptes" Member="adresses" ThisKey="noAdrs" OtherKey="idAdrs" Type="adresses" IsForeignKey="true" />
+      <Association Name="typecomptes_comptes" Member="typecomptes" ThisKey="notpCmpt" OtherKey="idtype" Type="typecomptes" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.etatcommandes" Member="etatcommandes">
+    <Type Name="etatcommandes">
+      <Column Name="idEtat" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Etat" Type="System.String" DbType="VarChar(35) NOT NULL" CanBeNull="false" />
+      <Association Name="etatcommandes_commandes" Member="commandes" ThisKey="idEtat" OtherKey="idetat" Type="commandes" />
+    </Type>
+  </Table>
+  <Table Name="dbo.items_commande" Member="items_commande">
+    <Type Name="items_commande">
+      <Column Name="noCommande" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="noProduit" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="qte" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="commandes_items_commande" Member="commandes" ThisKey="noCommande" OtherKey="idCommande" Type="commandes" IsForeignKey="true" />
+      <Association Name="produits_items_commande" Member="produits" ThisKey="noProduit" OtherKey="idProduit" Type="produits" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.menu_produits" Member="menu_produits">
+    <Type Name="menu_produits">
+      <Column Name="idItem" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idMenu" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idProduit" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="menus_menu_produits" Member="menus" ThisKey="idMenu" OtherKey="idMenu" Type="menus" IsForeignKey="true" />
+      <Association Name="produits_menu_produits" Member="produits" ThisKey="idProduit" OtherKey="idProduit" Type="produits" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.menus" Member="menus">
+    <Type Name="menus">
+      <Column Name="idMenu" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="titreMenu" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="actif" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="commentaires" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="idResto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="menus_commandes" Member="commandes" ThisKey="idMenu" OtherKey="idMenu" Type="commandes" />
+      <Association Name="menus_menu_produits" Member="menu_produits" ThisKey="idMenu" OtherKey="idMenu" Type="menu_produits" />
+      <Association Name="restaurants_menus" Member="restaurants" ThisKey="idResto" OtherKey="idResto" Type="restaurants" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.modespaiement" Member="modespaiement">
+    <Type Name="modespaiement">
+      <Column Name="idMode" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="description" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Association Name="modespaiement_commandes" Member="commandes" ThisKey="idMode" OtherKey="idModePaiement" Type="commandes" />
+    </Type>
+  </Table>
+  <Table Name="dbo.produits" Member="produits">
+    <Type Name="produits">
+      <Column Name="idProduit" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nomProd" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="descProd" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="prixProd" Type="System.Decimal" DbType="Decimal(10,0) NOT NULL" CanBeNull="false" />
+      <Column Name="imgProd" Type="System.String" DbType="VarChar(1000) NOT NULL" CanBeNull="false" />
+      <Column Name="idCategorie" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="produits_items_commande" Member="items_commande" ThisKey="idProduit" OtherKey="noProduit" Type="items_commande" />
+      <Association Name="produits_menu_produits" Member="menu_produits" ThisKey="idProduit" OtherKey="idProduit" Type="menu_produits" />
+      <Association Name="categories_produits" Member="categories" ThisKey="idCategorie" OtherKey="idCategorie" Type="categories" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.restaurants" Member="restaurants">
+    <Type Name="restaurants">
+      <Column Name="idResto" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nomResto" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="idAdrs" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Actif" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Association Name="restaurants_menus" Member="menus" ThisKey="idResto" OtherKey="idResto" Type="menus" />
+      <Association Name="adresses_restaurants" Member="adresses" ThisKey="idAdrs" OtherKey="idAdrs" Type="adresses" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

@@ -34,5 +34,14 @@ namespace Restaurant
 		{
 			this.m_BD.SubmitChanges();
 		}
+
+		#region Comptes
+		public void ajouterCompte(comptes p_Compte)
+		{
+			this.m_BD.comptes.InsertOnSubmit(p_Compte);
+		}
+		#endregion
+
+
 	}
 }
