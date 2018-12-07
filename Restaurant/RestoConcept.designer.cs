@@ -23,7 +23,7 @@ namespace Restaurant
 	
 	
 	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="RestaurantConcept")]
-	public partial class RConceptDataContext : System.Data.Linq.DataContext
+	public partial class RestoConceptDataContext : System.Data.Linq.DataContext
 	{
 		
 		private static System.Data.Linq.Mapping.MappingSource mappingSource = new AttributeMappingSource();
@@ -65,31 +65,31 @@ namespace Restaurant
     partial void Deleterestaurants(restaurants instance);
     #endregion
 		
-		public RConceptDataContext() : 
+		public RestoConceptDataContext() : 
 				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public RConceptDataContext(string connection) : 
+		public RestoConceptDataContext(string connection) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public RConceptDataContext(System.Data.IDbConnection connection) : 
+		public RestoConceptDataContext(System.Data.IDbConnection connection) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public RConceptDataContext(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
+		public RestoConceptDataContext(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public RConceptDataContext(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
+		public RestoConceptDataContext(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();

@@ -113,7 +113,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BDResto.cs" />
-    <Compile Include="Client.cs" />
     <Compile Include="CreationMenu.aspx.cs">
       <DependentUpon>CreationMenu.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -137,12 +136,12 @@
     <Compile Include="PageMaitre.Master.designer.cs">
       <DependentUpon>PageMaitre.Master</DependentUpon>
     </Compile>
-    <Compile Include="RConcept.designer.cs">
+    <Compile Include="RConceptDataContext.cs" />
+    <Compile Include="RestoConcept.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>RConcept.dbml</DependentUpon>
+      <DependentUpon>RestoConcept.dbml</DependentUpon>
     </Compile>
-    <Compile Include="RestoConceptDataContext.cs" />
     <Compile Include="Utilisateur.cs" />
   </ItemGroup>
   <ItemGroup />
@@ -158,13 +157,13 @@
     <Content Include="format.css" />
     <Content Include="PageMaitre.Master" />
     <Content Include="web.config" />
-    <Content Include="RConcept.dbml">
+    <Content Include="RestoConcept.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>RConcept.designer.cs</LastGenOutput>
+      <LastGenOutput>RestoConcept.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
-    <None Include="RConcept.dbml.layout">
-      <DependentUpon>RConcept.dbml</DependentUpon>
+    <None Include="RestoConcept.dbml.layout">
+      <DependentUpon>RestoConcept.dbml</DependentUpon>
     </None>
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>

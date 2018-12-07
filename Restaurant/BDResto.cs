@@ -1,21 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
-using System.Diagnostics;
-using System.Linq;
-using System.Configuration;
 
 namespace Restaurant
 {
 	public class BDResto
 	{
-		private RConceptDataContext m_BD;
+		private RestoConceptDataContext m_BD;
 		private static BDResto m_BDResto;
 
 		private BDResto()
 		{
-			this.m_BD = new RConceptDataContext(ConfigurationManager.ConnectionStrings["RestaurantConceptConnectionString"].ConnectionString);
+			this.m_BD = new RestoConceptDataContext(ConfigurationManager.ConnectionStrings["RestaurantConceptConnectionString"].ConnectionString);
 		}
 
 		public static BDResto Instance
@@ -34,14 +32,13 @@ namespace Restaurant
 		{
 			this.m_BD.SubmitChanges();
 		}
-
-		#region Comptes
-		public void ajouterCompte(comptes p_Compte)
+		public void ajouterComptes(comptes p_Comptes)
 		{
-			this.m_BD.comptes.InsertOnSubmit(p_Compte);
+			this.m_BD.comptes.InsertOnSubmit(p_Comptes);
 		}
-		#endregion
-
-
+		public void ajouterMenu(menus p_Menus)
+		{
+			this.m_BD.menus.InsertOnSubmit(p_Menus);
+		}
 	}
 }

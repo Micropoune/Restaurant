@@ -4,6 +4,8 @@ namespace Restaurant
 {
 	internal class RConceptDataContext
 	{
+		internal object compte;
+		internal object comptes;
 		private object connectionString;
 
 		public RConceptDataContext(object connectionString)
@@ -15,5 +17,6 @@ namespace Restaurant
 		{
 			throw new NotImplementedException();
 		}
+
 	}
 }
