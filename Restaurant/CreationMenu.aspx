@@ -1,7 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PageMaitre.Master" AutoEventWireup="true" CodeBehind="CreationMenu.aspx.cs" Inherits="Restaurant.CreationMenu" %>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="Contenu" runat="server">
-
+	<asp:LinkButton ID="lnkAccueil" runat="server" OnClick="lnkAccueil_Click">Accueil</asp:LinkButton>
+	<asp:LinkButton ID="lnkDeconnecter" runat="server" OnClick="lnkDeconnecter_Click">Déconnecter</asp:LinkButton>
+	<asp:LinkButton ID="lnkGestionMenu" runat="server" OnClick="lnkGestionMenu_Click">Gestion menu</asp:LinkButton>
 	<fieldset class="menu">
          <legend>Menu</legend> 
 		<asp:Label ID="lblNumeroMenu" runat="server" Text="Numero de menu" Width="150px"></asp:Label>

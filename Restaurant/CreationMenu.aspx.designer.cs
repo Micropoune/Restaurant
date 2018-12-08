@@ -13,6 +13,33 @@ namespace Restaurant {
     public partial class CreationMenu {
         
         /// <summary>
+        /// Contrôle lnkAccueil.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkAccueil;
+        
+        /// <summary>
+        /// Contrôle lnkDeconnecter.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkDeconnecter;
+        
+        /// <summary>
+        /// Contrôle lnkGestionMenu.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkGestionMenu;
+        
+        /// <summary>
         /// Contrôle lblNumeroMenu.
         /// </summary>
         /// <remarks>

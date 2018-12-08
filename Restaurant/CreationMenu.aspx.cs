@@ -45,5 +45,20 @@ namespace Restaurant
 		{
 			Response.Redirect("~/AjoutModifMets.aspx");
 		}
+
+		protected void lnkAccueil_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		protected void lnkDeconnecter_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		protected void lnkGestionMenu_Click(object sender, EventArgs e)
+		{
+
+		}
 	}
 }

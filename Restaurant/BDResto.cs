@@ -14,7 +14,7 @@ namespace Restaurant
 
 		private BDResto()
 		{
-			this.m_BD = new RestoConceptDataContext(ConfigurationManager.ConnectionStrings["RestaurantConceptConnectionString"].ConnectionString);
+			this.m_BD = new RestoConceptDataContext(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
 		}
 
 		public static BDResto Instance
@@ -57,9 +57,23 @@ namespace Restaurant
 		#endregion
 
 		#region Mets
-		public void ajouterMets(produits p_mets)
+		public void ajouterMets(produits p_Mets)
 		{
-			this.m_BD.produits.InsertOnSubmit(p_mets);
+			Debug.Assert((p_Mets != null), "p_Mets doit être différent de null");
+			this.m_BD.produits.InsertOnSubmit(p_Mets);
+		}
+		#endregion
+
+		#region Categorie
+
+		/// <summary>
+		/// Retourne la liste de toutes les categories
+		/// </summary>
+		/// <returns></returns>
+		public IQueryable<categories> GetAllCategorie()
+		{
+			return m_BD.categories;
+
 		}
 		#endregion
 	}
