@@ -9,8 +9,8 @@ namespace Restaurant
 {
 	public partial class AjoutMofifMets : System.Web.UI.Page
 	{
-		produits metsAAjouter = new produits();
-		string cheminImage="";
+		produits m_metsAAjouter = new produits();
+		string m_cheminImage="";
 		protected void Page_Load(object sender, EventArgs e)
 		{
 
@@ -29,7 +29,7 @@ namespace Restaurant
 			nouveauMets.nomProd = this.txtNomMets.Text;
 			nouveauMets.descProd = this.txtDescriptionMet.Text;
 			nouveauMets.prixProd = Convert.ToDecimal(this.txtPrixMets.Text);
-			nouveauMets.imgProd = this.cheminImage;
+			nouveauMets.imgProd = this.m_cheminImage;
 
 			BDResto.Instance.ajouterMets(nouveauMets);
 			BDResto.Instance.Sauvegarder();
@@ -38,7 +38,7 @@ namespace Restaurant
 
 		protected void btnAnnuler_Click(object sender, EventArgs e)
 		{
-			Response.Redirect("~/Default.aspx");
+			Response.Redirect("~/CreationMenu.aspx");
 		}
 
 		protected void lnkAccueil_Click(object sender, EventArgs e)
@@ -90,7 +90,7 @@ namespace Restaurant
 					//si la taille est correct on sauvegarde 
 					FUploadImg.SaveAs(Server.MapPath(imgPath));
 					Image.ImageUrl = "~/" + imgPath;
-					this.cheminImage = imgPath;
+					this.m_cheminImage = imgPath;
 					Page.ClientScript.RegisterClientScriptBlock(typeof(Page),
 					"Alert", "alert('Image sauvegard!')", true);
 

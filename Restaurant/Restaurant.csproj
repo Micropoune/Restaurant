@@ -134,6 +134,13 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="EnConstruction.aspx.cs">
+      <DependentUpon>EnConstruction.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EnConstruction.aspx.designer.cs">
+      <DependentUpon>EnConstruction.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Menu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PageMaitre.Master.cs">
@@ -151,9 +158,7 @@
     </Compile>
     <Compile Include="Utilisateur.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="images\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="960.css" />
     <Content Include="AjoutModifMets.aspx" />
@@ -164,7 +169,10 @@
     <Content Include="CreationMenu.aspx" />
     <Content Include="Default.aspx" />
     <None Include="packages.config" />
+    <Content Include="EnConstruction.aspx" />
     <Content Include="format.css" />
+    <Content Include="images\pageEnConstruction.png" />
+    <Content Include="images\pizzaMerveilleuse.jpg" />
     <Content Include="PageMaitre.Master" />
     <Content Include="web.config" />
     <Content Include="RestoConcept.dbml">

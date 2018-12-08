@@ -48,17 +48,27 @@ namespace Restaurant
 
 		protected void lnkAccueil_Click(object sender, EventArgs e)
 		{
-
+			Response.Redirect("~/EnConstruction.aspx");
 		}
 
 		protected void lnkDeconnecter_Click(object sender, EventArgs e)
 		{
-
+			Response.Redirect("~/EnConstruction.aspx");
 		}
 
 		protected void lnkGestionMenu_Click(object sender, EventArgs e)
 		{
+			Response.Redirect("~/EnConstruction.aspx");
+		}
 
+		protected void btnModifierMets_Click(object sender, EventArgs e)
+		{
+			Response.Redirect("~/EnConstruction.aspx");
+		}
+
+		protected void btnDesactiverMets_Click(object sender, EventArgs e)
+		{
+			Response.Redirect("~/EnConstruction.aspx");
 		}
 	}
 }

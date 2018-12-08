@@ -44,8 +44,9 @@
 				<legend> Gestions mets</legend>
 				<br />
 				<asp:Button ID="btnAjouterMets" runat="server" Text="Ajouter mets" OnClick="btnAjouterMets_Click" />
-				<asp:Button ID="btnModifierMets" runat="server" Text="Modifier mets" />
-				<asp:Button ID="btnDesactiverMets" runat="server" Text="Désactiver mets" />
+				<asp:Button ID="btnModifierMets" runat="server" Text="Modifier mets" OnClick="btnModifierMets_Click" />
+				<asp:Button ID="btnDesactiverMets" runat="server" Text="Désactiver mets" OnClick="btnDesactiverMets_Click" />
+				<br />
 				<br />
 				<asp:TextBox ID="txtRecherche" runat="server"></asp:TextBox>
 				<asp:Label ID="lblRecherche" runat="server" Text="Recherche"></asp:Label>
