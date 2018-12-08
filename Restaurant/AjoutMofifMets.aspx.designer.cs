@@ -10,115 +10,106 @@
 namespace Restaurant {
     
     
-    public partial class CreationMenu {
+    public partial class AjoutMofifMets {
         
         /// <summary>
-        /// Contrôle lblNumeroMenu.
+        /// Contrôle lnkAccueil.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNumeroMenu;
+        protected global::System.Web.UI.WebControls.LinkButton lnkAccueil;
         
         /// <summary>
-        /// Contrôle txtIdMenu.
+        /// Contrôle lnkDeconnecter.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtIdMenu;
+        protected global::System.Web.UI.WebControls.LinkButton lnkDeconnecter;
         
         /// <summary>
-        /// Contrôle valNomUnique.
+        /// Contrôle lnkConsulterMenu.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator valNomUnique;
+        protected global::System.Web.UI.WebControls.LinkButton lnkConsulterMenu;
         
         /// <summary>
-        /// Contrôle lblTitreMenu.
+        /// Contrôle lblNumero.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTitreMenu;
+        protected global::System.Web.UI.WebControls.Label lblNumero;
         
         /// <summary>
-        /// Contrôle txtDescriptionMenu.
+        /// Contrôle txtIdMets.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDescriptionMenu;
+        protected global::System.Web.UI.WebControls.TextBox txtIdMets;
         
         /// <summary>
-        /// Contrôle GridView1.
+        /// Contrôle lblNom.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.WebControls.Label lblNom;
         
         /// <summary>
-        /// Contrôle SqlDataSource1.
+        /// Contrôle txtNomMets.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
+        protected global::System.Web.UI.WebControls.TextBox txtNomMets;
         
         /// <summary>
-        /// Contrôle btnAjouterMets.
+        /// Contrôle lbldescription.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAjouterMets;
+        protected global::System.Web.UI.WebControls.Label lbldescription;
         
         /// <summary>
-        /// Contrôle btnModifierMets.
+        /// Contrôle txtDescriptionMet.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnModifierMets;
+        protected global::System.Web.UI.WebControls.TextBox txtDescriptionMet;
         
         /// <summary>
-        /// Contrôle btnDesactiverMets.
+        /// Contrôle lblPrix.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnDesactiverMets;
+        protected global::System.Web.UI.WebControls.Label lblPrix;
         
         /// <summary>
-        /// Contrôle txtRecherche.
+        /// Contrôle txtPrixMets.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtRecherche;
-        
-        /// <summary>
-        /// Contrôle lblRecherche.
-        /// </summary>
-        /// <remarks>
-        /// Champ généré automatiquement.
-        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRecherche;
+        protected global::System.Web.UI.WebControls.TextBox txtPrixMets;
         
         /// <summary>
         /// Contrôle btnEnregistrer.

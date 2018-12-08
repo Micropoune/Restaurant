@@ -112,6 +112,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AjoutMofifMets.aspx.cs">
+      <DependentUpon>AjoutMofifMets.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AjoutMofifMets.aspx.designer.cs">
+      <DependentUpon>AjoutMofifMets.aspx</DependentUpon>
+    </Compile>
     <Compile Include="BDResto.cs" />
     <Compile Include="CreationMenu.aspx.cs">
       <DependentUpon>CreationMenu.aspx</DependentUpon>
@@ -147,6 +154,7 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include="960.css" />
+    <Content Include="AjoutMofifMets.aspx" />
     <Content Include="App_Data\RestaurantConcept.mdf" />
     <Content Include="App_Data\RestaurantConcept_log.ldf">
       <DependentUpon>RestaurantConcept.mdf</DependentUpon>

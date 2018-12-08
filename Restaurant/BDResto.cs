@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 
@@ -32,13 +33,34 @@ namespace Restaurant
 		{
 			this.m_BD.SubmitChanges();
 		}
+		#region Comptes Utilisateurs
 		public void ajouterComptes(comptes p_Comptes)
 		{
+			Debug.Assert((p_Comptes!= null), "p_Comptes doit être différent de null");
 			this.m_BD.comptes.InsertOnSubmit(p_Comptes);
 		}
+		#endregion
+
+		#region Menu
 		public void ajouterMenu(menus p_Menus)
 		{
+			Debug.Assert((p_Menus!=null), "p_Menu doit être différent de null");
 			this.m_BD.menus.InsertOnSubmit(p_Menus);
 		}
+		public menus GetMenu(int p_id)
+		{
+
+			return this.m_BD.menus.SingleOrDefault(
+				Menu => (Menu.idMenu == p_id));
+		}
+
+		#endregion
+
+		#region Mets
+		public void ajouterMets(produits p_mets)
+		{
+			this.m_BD.produits.InsertOnSubmit(p_mets);
+		}
+		#endregion
 	}
 }
