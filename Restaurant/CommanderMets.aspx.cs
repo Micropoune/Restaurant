@@ -13,5 +13,10 @@ namespace Restaurant
         {
 
         }
-    }
+
+		protected void btn_ajouter_Click(object sender, EventArgs e)
+		{
+
+		}
+	}
 }

@@ -120,6 +120,13 @@
       <DependentUpon>AjoutModifMets.aspx</DependentUpon>
     </Compile>
     <Compile Include="BDResto.cs" />
+    <Compile Include="CommanderMets.aspx.cs">
+      <DependentUpon>CommanderMets.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CommanderMets.aspx.designer.cs">
+      <DependentUpon>CommanderMets.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CreationMenu.aspx.cs">
       <DependentUpon>CreationMenu.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -141,7 +148,6 @@
     <Compile Include="EnConstruction.aspx.designer.cs">
       <DependentUpon>EnConstruction.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Menu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PageMaitre.Master.cs">
       <DependentUpon>PageMaitre.Master</DependentUpon>
@@ -156,7 +162,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RestoConcept.dbml</DependentUpon>
     </Compile>
-    <Compile Include="Utilisateur.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -166,6 +171,7 @@
     <Content Include="App_Data\RestaurantConcept_log.ldf">
       <DependentUpon>RestaurantConcept.mdf</DependentUpon>
     </Content>
+    <Content Include="CommanderMets.aspx" />
     <Content Include="CreationMenu.aspx" />
     <Content Include="Default.aspx" />
     <None Include="packages.config" />
