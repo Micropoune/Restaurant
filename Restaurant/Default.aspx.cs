@@ -31,7 +31,7 @@ namespace Restaurant
 
 		protected void btnCreationMenu_Click(object sender, EventArgs e)
 		{
-			Response.Redirect("~/CreationMenu.aspx");
+			Response.Redirect("~/AjoutModifMenu.aspx");
 		}
 
 		protected void btnAuthentification_Click(object sender, EventArgs e)

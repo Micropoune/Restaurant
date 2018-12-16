@@ -49,7 +49,6 @@ namespace Restaurant
 		}
 		public menus GetMenu(int p_id)
 		{
-
 			return this.m_BD.menus.SingleOrDefault(
 				Menu => (Menu.idMenu == p_id));
 		}
