@@ -19,11 +19,6 @@ namespace Restaurant
 			Response.Redirect("~/AjoutModifMets.aspx");
 		}
 
-		protected void btnAccepterCommande_Click(object sender, EventArgs e)
-		{
-
-		}
-
 		protected void btnCommanderMets_Click(object sender, EventArgs e)
 		{
 
