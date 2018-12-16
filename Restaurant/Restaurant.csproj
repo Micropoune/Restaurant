@@ -112,6 +112,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AfficherCommande.aspx.cs">
+      <DependentUpon>AfficherCommande.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AfficherCommande.aspx.designer.cs">
+      <DependentUpon>AfficherCommande.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AjoutModifMets.aspx.cs">
       <DependentUpon>AjoutModifMets.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -148,6 +155,15 @@
     <Compile Include="EnConstruction.aspx.designer.cs">
       <DependentUpon>EnConstruction.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ListeCommande.aspx.cs">
+      <DependentUpon>ListeCommande.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListeCommande.aspx.designer.cs">
+      <DependentUpon>ListeCommande.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Menu.cs" />
+
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PageMaitre.Master.cs">
       <DependentUpon>PageMaitre.Master</DependentUpon>
@@ -166,6 +182,7 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include="960.css" />
+    <Content Include="AfficherCommande.aspx" />
     <Content Include="AjoutModifMets.aspx" />
     <Content Include="App_Data\RestaurantConcept.mdf" />
     <Content Include="App_Data\RestaurantConcept_log.ldf">
@@ -177,8 +194,10 @@
     <None Include="packages.config" />
     <Content Include="EnConstruction.aspx" />
     <Content Include="format.css" />
+    <Content Include="images\fleche.png" />
     <Content Include="images\pageEnConstruction.png" />
     <Content Include="images\pizzaMerveilleuse.jpg" />
+    <Content Include="ListeCommande.aspx" />
     <Content Include="PageMaitre.Master" />
     <Content Include="web.config" />
     <Content Include="RestoConcept.dbml">
