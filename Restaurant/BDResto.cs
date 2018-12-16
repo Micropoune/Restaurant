@@ -157,52 +157,6 @@ namespace Restaurant
             return m_BD.commandes;
         }
 
-        /// <summary>
-        /// Retourne le montant total de la commande passée 
-        /// en paramètre. 
-        /// </summary>
-        public double GetPrixTotalCde(int p_NumCde)
-        {
-            double mntRetour = 0;
-            var detailCde = GetAllItemsCommande(p_NumCde);
-
-            foreach (items_commande item in detailCde)
-            {
-                // On récupère les informations du produit
-                var detailPdt = GetProduit(item.noProduit);
-                double prix = Convert.ToDouble(detailPdt.prixProd);
-                mntRetour += (item.qte * prix);
-            }
-            return mntRetour;
-        }
-
-        /// <summary>
-        /// Modifie l'état de la commande passée en paramètre avec le
-        /// nouvel état. 
-        /// </summary>
-        public void SetEtatCde(int p_NumCde, int p_EtatCde)
-        {
-            var query = (from cde in m_BD.commandes
-                        where cde.idCommande == p_NumCde
-                        select cde);
-
-            foreach (commandes itemCde in query)
-            {
-                itemCde.idetat = p_EtatCde;
-            }
-
-            // Submit the changes to the database.
-            try
-            {
-                m_BD.SubmitChanges();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                // Provide for exceptions.
-            }
-        }
-
 
         #endregion
 
@@ -258,19 +212,6 @@ namespace Restaurant
             return m_BD.adresses.SingleOrDefault(
                 u => (u.idAdrs == p_IdAdresse));
         }
-        #endregion
-
-        #region EtatCde
-        /// <summary>
-        /// Retourne la liste de tous les états de commande
-        /// 
-        /// </summary>
-        public IQueryable<etatcommandes> GetAllEtatsCde()
-        {
-            return m_BD.etatcommandes;
-        }
-
-        
         #endregion
 
     }
