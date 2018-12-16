@@ -14,81 +14,119 @@ namespace Restaurant
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            txtMessage.Text = "";
             
+            txtMessage.Text = "";
+
             // Si on est avec état différent de Autre, on doit sélectionner que
             // les commandes avec l'état choisi
             if (ddlEtatCommande.SelectedValue == "")
             {
-                ddlEtatCommande.SelectedIndex = 7;
+                
+                //ddlEtatCommande.SelectedIndex = 7;
+                //ddlEtatCommande.SelectedValue = "7";
+            }
+
+            // On récupère le type de compte de l'utilisateur connecté 
+            // car seul le gérant peut visualiser toutes les commandes
+            var typeCompte = BDResto.Instance.GetTypeCompteUtil(Convert.ToInt32(this.Session[Site1.SESSION_IDUTILISATEURCONNECTE]));
+            if (typeCompte != 2)
+            {
+                
+                if (typeCompte == 3)
+                {
+                    // Le chef peut voir les commandes acceptée ou en préparation
+                    ddlEtatCommande.SelectedIndex = 1;
+                    
+                }
+                else
+                {
+                    if (typeCompte == 4)
+                    {
+                        // Le livreur peut voir les commandes prêtes à livrer
+                        ddlEtatCommande.SelectedIndex = 3;
+                    }
+                }
+                ddlEtatCommande.Enabled = false;
             }
 
             // On charge la table contenant les commandes avec le bon état
             tableauSel = chargementTable(ddlEtatCommande.SelectedValue.ToString());
 
+            // Procédure qui supprime le gridview
+            clearGridView(gvCommandes);
+
             if (tableauSel.Count == 0)
             {
                 txtMessage.Text = "Aucune commande avec l'état sélectionné.";
             }
-
-            
-
-            // Procédure qui supprime le gridview
-            clearGridView(gvCommandes);
-
-            // Chargement de la gridview
-            DataTable dt = new DataTable("gvCommande");
-            DataColumn dcNum = new DataColumn("idCommande", typeof(int));
-            DataColumn dcDate = new DataColumn("datecommande", typeof(DateTime));
-            DataColumn dcEtat = new DataColumn("idetat", typeof(string));
-
-
-            dt.Columns.Add(dcNum);
-            dt.Columns.Add(dcDate);
-            dt.Columns.Add(dcEtat);
-
-            foreach (commandes item in tableauSel)
-            {
-                
-                DataRow dr = dt.NewRow();
-
-                
-                dr["idCommande"] = item.idCommande;
-                dr["datecommande"] = item.datecommande;
-                dr["idetat"] = Convert.ToString(item.etatcommandes);
-
-                dt.Rows.Add(dr);
-            }
-
-
-            // On parcoure les colonnes de la table de données pour 
-            // définir le champ lié aux données de manière dynamique
-
-            foreach (DataColumn col in dt.Columns)
+            else
             {
 
-                // Déclarer le champ lié et allouer de la mémoire pour le champ lié
-                BoundField bfield = new BoundField();
 
-                // Initialise la valeur du champ de données.
-                bfield.DataField = col.ColumnName;
+                
 
-                // Initialise la valeur du champ HeaderText.
-                bfield.HeaderText = col.ColumnName;
+                // Chargement de la gridview
+                DataTable dt = new DataTable("gvCommande");
+                DataColumn dcNum = new DataColumn("N° Commande", typeof(int));
+                DataColumn dcDate = new DataColumn("Date Commande", typeof(DateTime));
+                DataColumn dcClient = new DataColumn("Nom du client", typeof(String));
+                DataColumn dcMntTotal = new DataColumn("Montant Total", typeof(Decimal));
 
-                // Ajoute le champ lié nouvellement créé au GridView.
-                gvCommandes.Columns.Add(bfield);
 
+                dt.Columns.Add(dcNum);
+                dt.Columns.Add(dcDate);
+                dt.Columns.Add(dcClient);
+                dt.Columns.Add(dcMntTotal);
+
+                foreach (commandes item in tableauSel)
+                {
+
+                    DataRow dr = dt.NewRow();
+
+                    // On récupère les infos du client de la commande pour pouvoir
+                    // afficher son nom
+                    var CltCde = BDResto.Instance.GetCompte(item.noClient);
+
+
+                    dr["N° Commande"] = item.idCommande;
+                    dr["Date Commande"] = item.datecommande;
+                    dr["Nom du client"] = CltCde.nom + " " + CltCde.prenom;
+                    dr["Montant Total"] = BDResto.Instance.GetPrixTotalCde(item.idCommande);
+
+                    dt.Rows.Add(dr);
+                }
+
+
+                // On parcoure les colonnes de la table de données pour 
+                // définir le champ lié aux données de manière dynamique
+
+                foreach (DataColumn col in dt.Columns)
+                {
+                    // Déclarer le champ lié et allouer de la mémoire pour le champ lié
+                    BoundField bfield = new BoundField();
+
+                    // Initialise la valeur du champ de données.
+                    bfield.DataField = col.ColumnName;
+
+                    // Initialise la valeur du champ HeaderText.
+                    bfield.HeaderText = col.ColumnName;
+
+                    // Ajoute le champ lié nouvellement créé au GridView.
+                    gvCommandes.Columns.Add(bfield);
+
+                }
+
+
+                // Initialise la DataSource
+                gvCommandes.DataSource = dt;
+
+                // Lie la table de données avec le GridView.
+
+                gvCommandes.DataBind();
+
+
+                //this.Session[Site1.SESSION_IDRESTO] = "1";
             }
-            // Initialise la DataSource
-            gvCommandes.DataSource = dt;
-
-            // Lie la table de données avec le GridView.
-
-            gvCommandes.DataBind();
-
-            this.Session[Site1.SESSION_IDRESTO] = "1";
-            
             
 
             // Affichage du nom du restaurant
@@ -115,17 +153,17 @@ namespace Restaurant
             var ensembleCommandes = BDResto.Instance.GetAllCommandes();
             List<commandes> tableauRetour = new List<commandes>();
 
-            if (p_EtatCde != "" && p_EtatCde != "7")
+            if (p_EtatCde != "")
             {
                 tableauRetour = (from element in ensembleCommandes
                                               where Convert.ToString(element.idetat) == p_EtatCde
                                               select element).ToList();
             }
-            else
-            {
-                tableauRetour = (from element in ensembleCommandes
-                                              select element).ToList();
-            }
+            //else
+            //{
+            //    tableauRetour = (from element in ensembleCommandes
+            //                                  select element).ToList();
+            //}
 
             
 
@@ -163,6 +201,22 @@ namespace Restaurant
             {
                 p_GridView.Columns.RemoveAt(i);
             }
+        }
+
+        protected void BtnAccueil_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Default.aspx");
+        }
+
+        protected void BtnDeconnecter_Click(object sender, EventArgs e)
+        {
+            this.Session.Abandon();
+            this.Response.Redirect("~/Default.aspx");
+        }
+
+        protected void btnAnnuler_Click(object sender, EventArgs e)
+        {
+            this.Response.Redirect("~/Default.aspx");
         }
     }
 }
