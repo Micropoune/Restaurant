@@ -31,15 +31,6 @@ namespace Restaurant {
         protected global::System.Web.UI.WebControls.LinkButton BtnDeconnecter;
         
         /// <summary>
-        /// Contrôle BtnGererRestaurant.
-        /// </summary>
-        /// <remarks>
-        /// Champ généré automatiquement.
-        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton BtnGererRestaurant;
-        
-        /// <summary>
         /// Contrôle Restaurant.
         /// </summary>
         /// <remarks>
@@ -103,24 +94,6 @@ namespace Restaurant {
         protected global::System.Web.UI.WebControls.TextBox numCommande;
         
         /// <summary>
-        /// Contrôle txtMessage.
-        /// </summary>
-        /// <remarks>
-        /// Champ généré automatiquement.
-        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMessage;
-        
-        /// <summary>
-        /// Contrôle gvCommandes.
-        /// </summary>
-        /// <remarks>
-        /// Champ généré automatiquement.
-        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvCommandes;
-        
-        /// <summary>
         /// Contrôle btnAfficher.
         /// </summary>
         /// <remarks>
@@ -137,5 +110,23 @@ namespace Restaurant {
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAnnuler;
+        
+        /// <summary>
+        /// Contrôle txtMessage.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtMessage;
+        
+        /// <summary>
+        /// Contrôle gvCommandes.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvCommandes;
     }
 }
