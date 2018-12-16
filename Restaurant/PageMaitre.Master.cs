@@ -9,7 +9,11 @@ namespace Restaurant
 {
 	public partial class Site1 : System.Web.UI.MasterPage
 	{
-		protected void Page_Load(object sender, EventArgs e)
+        public static string SESSION_IDUTILISATEURCONNECTE = "IDUtilisateurConnecte";
+        public static string SESSION_IDRESTO = "idResto";
+        public static string SESSION_IDCOMMANDE = "idCommande";
+
+        protected void Page_Load(object sender, EventArgs e)
 		{
 
 		}

@@ -34,15 +34,51 @@ namespace Restaurant
 			this.m_BD.SubmitChanges();
 		}
 		#region Comptes Utilisateurs
+
 		public void ajouterComptes(comptes p_Comptes)
 		{
 			Debug.Assert((p_Comptes!= null), "p_Comptes doit être différent de null");
 			this.m_BD.comptes.InsertOnSubmit(p_Comptes);
 		}
-		#endregion
 
-		#region Menu
-		public void ajouterMenu(menus p_Menus)
+        /// <summary>
+        /// Retourne la liste de tous les comptes. 
+        /// </summary>
+        public IQueryable<comptes> GetAllComptes()
+        {
+            return m_BD.comptes;
+        }
+
+        /// <summary>
+        /// Retourne le compte dont l'ID est 
+        /// p_IDCompte, ou null s'il n'y en a aucun.
+        /// </summary>
+        /// <param name="p_Idcompte">Identifiant à rechercher</param>
+        /// <returns>Un compte ou null</returns>
+        public comptes GetCompte(int p_IdCompte)
+        {
+            return m_BD.comptes.SingleOrDefault(
+                u => (u.noCompte == p_IdCompte));
+        }
+
+        /// <summary>
+        /// Retourne le type de compte de l'utilisateur dont l'ID
+        /// est p_IDCompte, ou null s'il n'y en a aucun.
+        /// </summary>
+        /// <param name="p_Idcompte">Identifiant à rechercher</param>
+        /// <returns>Un type de compte ou null</returns>
+        public int GetTypeCompteUtil(int p_IdCompte)
+        {
+            var compte = m_BD.comptes.SingleOrDefault(
+                u => (u.noCompte == p_IdCompte));
+            return compte.notpCmpt;
+        }
+
+
+        #endregion
+
+        #region Menu
+        public void ajouterMenu(menus p_Menus)
 		{
 			Debug.Assert((p_Menus!=null), "p_Menu doit être différent de null");
 			this.m_BD.menus.InsertOnSubmit(p_Menus);
@@ -75,6 +111,109 @@ namespace Restaurant
 			return m_BD.categories;
 
 		}
-		#endregion
-	}
+        #endregion
+
+        // Ajout Nathalie
+        #region Restaurant
+
+        /// <summary>
+        /// Retourne la liste de tous les restaurants. 
+        /// </summary>
+        public IQueryable<restaurants> GetAllRestaurants()
+        {
+            return m_BD.restaurants;
+        }
+
+        /// <summary>
+        /// Retourne le restaurant dont l'ID est 
+        /// p_ID, ou null s'il n'y en a aucun.
+        /// </summary>
+        /// <param name="p_IdResto">Identifiant à rechercher</param>
+        /// <returns>Un restaurant ou null</returns>
+        public restaurants GetRestaurant(int p_IdResto)
+        {
+            return m_BD.restaurants.SingleOrDefault(
+                u => (u.idResto == p_IdResto));
+        }
+        #endregion
+
+        #region Commande
+        /// <summary>
+        /// Retourne la commande dont l'ID est 
+        /// p_IDCommande, ou null s'il n'y en a aucun.
+        /// </summary>
+        /// <param name="p_Idcommande">Identifiant à rechercher</param>
+        /// <returns>Une commande ou null</returns>
+        public commandes GetCommande(int p_IdCommande)
+        {
+            return m_BD.commandes.SingleOrDefault(
+                u => (u.idCommande == p_IdCommande));
+        }
+
+        /// <summary>
+        /// Retourne la liste de toutes les commandes. 
+        /// </summary>
+        public IQueryable<commandes> GetAllCommandes()
+        {
+            return m_BD.commandes;
+        }
+
+
+        #endregion
+
+        #region ItemsCommande
+        /// <summary>
+        /// Retourne la liste de tous les items de la commande
+        /// dont l'ID est p_noCde , ou null s'il n'y en a aucun. 
+        /// </summary>
+        public IQueryable<items_commande> GetAllItemsCommande(int p_noCde)
+        {
+            var listeItem = ((from element in m_BD.items_commande
+                             where element.noCommande == p_noCde
+                             select element).ToList().AsQueryable());
+           
+            return (IQueryable<items_commande>) listeItem;
+        }
+
+
+        #endregion
+
+        #region Produits
+        /// <summary>
+        /// Retourne la liste de tous les produits
+        /// dont l'ID est passé en paramètre. 
+        /// </summary>
+        public IQueryable<produits> GetAllProduits()
+        {
+            return m_BD.produits;
+        }
+
+        /// <summary>
+        /// Retourne le produit
+        /// dont l'ID est p_noPdt, ou null s'il n'y en a aucun. 
+        /// </summary>
+        public produits GetProduit(int p_noPdt)
+        {
+            return m_BD.produits.SingleOrDefault(
+                u => (u.idProduit == p_noPdt));
+        }
+
+        #endregion
+
+        #region Adresse
+
+        /// <summary>
+        /// Retourne l'adresse dont l'ID est 
+        /// p_ID, ou null s'il n'y en a aucune.
+        /// </summary>
+        /// <param name="p_IdAdresse">Identifiant à rechercher</param>
+        /// <returns>Une adresse ou null</returns>
+        public adresses GetAdresse(int p_IdAdresse)
+        {
+            return m_BD.adresses.SingleOrDefault(
+                u => (u.idAdrs == p_IdAdresse));
+        }
+        #endregion
+
+    }
 }
