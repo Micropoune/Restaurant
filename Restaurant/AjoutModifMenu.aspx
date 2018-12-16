@@ -8,7 +8,7 @@
 	<br />
 	<br />
 	<asp:Label ID="status" runat="server" Text="Status :" Width="140px"></asp:Label>
-	<asp:DropDownList ID="ddlStatut" runat="server">
+	<asp:DropDownList ID="ddlStatut" runat="server" AutoPostBack="True">
 		<asp:ListItem Value="1">Actif</asp:ListItem>
 		<asp:ListItem Value="0">Inactif</asp:ListItem>
 		</asp:DropDownList>

@@ -9,7 +9,7 @@ namespace Restaurant
 {
 	public partial class AjoutMofifMets : System.Web.UI.Page
 	{
-		produits m_metsAAjouter = new produits();
+		//produits m_metsAAjouter = new produits();
 		private string m_cheminImage="";
 		protected void Page_Load(object sender, EventArgs e)
 		{
