@@ -9,6 +9,8 @@
 		<br />
 		<asp:Button ID="btnCommanderMets" runat="server" Text="Commander mets" OnClick="btnCommanderMets_Click" Width="200px" />
 		<br />
+		<asp:Button ID="btnAccepterCommande" runat="server" Text="Accepter une commande" OnClick="btnAccepterCommande_Click" Width="200px" />
+		<br />
 		<asp:Button ID="btnCreerMets" runat="server" Text="Créer un mets" OnClick="btnCreerMets_Click" Width="200px" />
 		<br />
 		<asp:Button ID="btnListeCommande" runat="server" Text="Liste des commandes " Width="200px" OnClick="btnListeCommande_Click" />
