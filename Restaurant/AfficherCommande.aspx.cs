@@ -16,7 +16,7 @@ namespace Restaurant
             txtNumCde.Text = Convert.ToString(this.Session[Site1.SESSION_IDCOMMANDE]);
             var commande = BDResto.Instance.GetCommande(Convert.ToInt32(this.Session[Site1.SESSION_IDCOMMANDE]));
 
-            // On récupère l'état de la commande 
+            // On récupère l'état de la commande   
             txtEtatCde.Text = Convert.ToString(commande.idetat);
 
             var info = recupererInfoCde(commande.noClient, commande.noAdrs);
