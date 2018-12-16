@@ -216,8 +216,5 @@ namespace Restaurant
 
     }
 
-		#endregion
-
 	}
 
-}

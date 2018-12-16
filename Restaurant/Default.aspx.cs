@@ -38,5 +38,15 @@ namespace Restaurant
 		{
 
 		}
+
+		protected void btnAfficherCmd_Click(object sender, EventArgs e)
+		{
+			Response.Redirect("~/AfficherCommande.aspx");
+		}
+
+		protected void btnListeCommande_Click(object sender, EventArgs e)
+		{
+			Response.Redirect("~/ListeCommande.aspx");
+		}
 	}
 }
