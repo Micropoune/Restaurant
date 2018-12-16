@@ -13,5 +13,30 @@ namespace Restaurant
 		{
 
 		}
+
+		protected void btnCreerMets_Click(object sender, EventArgs e)
+		{
+			Response.Redirect("~/AjoutModifMets.aspx");
+		}
+
+		protected void btnAccepterCommande_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		protected void btnCommanderMets_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		protected void btnCreationMenu_Click(object sender, EventArgs e)
+		{
+			Response.Redirect("~/CreationMenu.aspx");
+		}
+
+		protected void btnAuthentification_Click(object sender, EventArgs e)
+		{
+
+		}
 	}
 }

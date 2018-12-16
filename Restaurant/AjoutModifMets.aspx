@@ -8,9 +8,6 @@
 	<fieldset class="Mets">
 				<legend> Mets </legend>
 				<br />
-		<asp:Label ID="lblNumero" runat="server" Text="Numéro :" Width="120px"></asp:Label>
-		<asp:TextBox ID="txtIdMets" runat="server"></asp:TextBox>
-				<br />
 				<br />
 		<asp:Label ID="lblCategorie" runat="server" Text="Catégorie :" Width="120px"></asp:Label>
 			<asp:DropDownList ID="ddlCategorie" runat="server" DataSourceID="DSCategories" DataTextField="nomCategorie" DataValueField="nomCategorie"></asp:DropDownList>

@@ -20,7 +20,7 @@
 
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Contenu" runat="server">
-    <div>
+	<div>
 
     
     <div style="width: 60%; float:left">
@@ -93,7 +93,7 @@
                         <asp:RadioButton ID="rdb_2litre" runat="server" Text="2 Litre" />
                     </td>
                     <td>
-                        <asp:Button ID="btn_ajouter" runat="server" CssClass="auto-style2" Text="Ajouter" />
+                        <asp:Button ID="btn_ajouter" runat="server" CssClass="auto-style2" Text="Ajouter" OnClick="btn_ajouter_Click" />
                     </td>
                 </tr>
             </table>

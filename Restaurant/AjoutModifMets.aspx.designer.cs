@@ -40,24 +40,6 @@ namespace Restaurant {
         protected global::System.Web.UI.WebControls.LinkButton lnkConsulterMenu;
         
         /// <summary>
-        /// Contrôle lblNumero.
-        /// </summary>
-        /// <remarks>
-        /// Champ généré automatiquement.
-        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNumero;
-        
-        /// <summary>
-        /// Contrôle txtIdMets.
-        /// </summary>
-        /// <remarks>
-        /// Champ généré automatiquement.
-        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtIdMets;
-        
-        /// <summary>
         /// Contrôle lblCategorie.
         /// </summary>
         /// <remarks>

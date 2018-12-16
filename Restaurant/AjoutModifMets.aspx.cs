@@ -10,7 +10,7 @@ namespace Restaurant
 	public partial class AjoutMofifMets : System.Web.UI.Page
 	{
 		produits m_metsAAjouter = new produits();
-		string m_cheminImage="";
+		private string m_cheminImage="";
 		protected void Page_Load(object sender, EventArgs e)
 		{
 
@@ -20,7 +20,7 @@ namespace Restaurant
 		{
 			produits nouveauMets = new produits();
 
-			nouveauMets.idProduit=Convert.ToInt32(this.txtIdMets.Text);
+			//nouveauMets.idProduit=int.Parse(this.txtIdMets.Text);
 
 			var listeCategorie = BDResto.Instance.GetAllCategorie().SingleOrDefault(c =>
 					  (c.nomCategorie.Equals(this.ddlCategorie.SelectedValue)));
@@ -73,7 +73,7 @@ namespace Restaurant
 				//recupere le nom de l'image "posted"        
 				imgName = FUploadImg.PostedFile.FileName;
 
-				//definit le chemon ou on enregistre l'image          
+				//definit le chemin ou on enregistre l'image          
 				imgPath = "images/" + imgName;
 
 				//recup'ere la taille en bytes
@@ -90,11 +90,12 @@ namespace Restaurant
 					//si la taille est correct on sauvegarde 
 					FUploadImg.SaveAs(Server.MapPath(imgPath));
 					Image.ImageUrl = "~/" + imgPath;
-					this.m_cheminImage = imgPath;
+					
 					Page.ClientScript.RegisterClientScriptBlock(typeof(Page),
 					"Alert", "alert('Image sauvegard!')", true);
-
+					
 				}
+				this.m_cheminImage = imgPath;
 			}
 		}
 	}
