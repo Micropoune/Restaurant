@@ -263,7 +263,7 @@ namespace Restaurant
         #region EtatCde
         /// <summary>
         /// Retourne la liste de tous les états de commande
-        /// 
+        ///   
         /// </summary>
         public IQueryable<etatcommandes> GetAllEtatsCde()
         {

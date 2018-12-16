@@ -21,6 +21,7 @@ namespace Restaurant
             this.Session[Site1.SESSION_IDRESTO] = 1;
             //this.Session[Site1.SESSION_IDUTILISATEURCONNECTE] = 2;
 
+
         }
 	}
 }
