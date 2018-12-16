@@ -12,17 +12,24 @@ namespace Restaurant
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //this.Session[Site1.SESSION_IDCOMMANDE] = 2;
             // On récupère les informations de la commande
+            txtNumCde.Text = Convert.ToString(this.Session[Site1.SESSION_IDCOMMANDE]);
             var commande = BDResto.Instance.GetCommande(Convert.ToInt32(this.Session[Site1.SESSION_IDCOMMANDE]));
-            var info = recupererInfoCde(commande.idCommande, commande.noClient, commande.noAdrs);
-            infoCommande.Text = info;
+
+            // On récupère l'état de la commande 
+            txtEtatCde.Text = Convert.ToString(commande.idetat);
+
+            var info = recupererInfoCde(commande.noClient, commande.noAdrs);
+            txtInfoClient.Text = info;
+
+            // Procédure qui supprime le gridview
+            clearGridView(gvDetailCde);
 
             // Préparation de la table de données
             DataTable tabDetail = new DataTable();
 
             // Création de l'ID colonne pour l'ajouter à la table de données
-            DataColumn dcol = new DataColumn("NOM", typeof(System.String));
+            DataColumn dcol = new DataColumn("Mets", typeof(System.String));
             tabDetail.Columns.Add(dcol);
 
             //Création de l'ID colonne pour l'ajouter à la table de données
@@ -44,12 +51,12 @@ namespace Restaurant
             {
                 // On récupère les informations du produit
                 var detailPdt = BDResto.Instance.GetProduit(item.noProduit);
-            
+
                 // Création d'une nouvelle ligne
                 DataRow drow = tabDetail.NewRow();
 
                 // On initialise les données de la ligne 
-                drow["NOM"] = detailPdt.nomProd;
+                drow["Mets"] = detailPdt.nomProd;
                 drow["QTE"] = item.qte;
                 drow["PU"] = detailPdt.prixProd;
                 drow["PxTotal"] = item.qte * detailPdt.prixProd;
@@ -85,12 +92,34 @@ namespace Restaurant
 
             gvDetailCde.DataBind();
 
+            // On récupère le total de la commande
+            double mntCde = BDResto.Instance.GetPrixTotalCde(Convert.ToInt32(txtNumCde.Text));
+            txtMntTotal.Text = Convert.ToString(mntCde);
+
+            // On calcule le montant TPS et TVQ
+            // On récupère le total de la commande
+            double mntTPS = Math.Round(mntCde * 0.05, 2);
+            double mntTVQ = Math.Round(mntCde * 0.09975, 2);
+            double total = Math.Round(mntCde + mntTPS + mntTVQ, 2);
+            txtTPS.Text = Convert.ToString(mntTPS);
+            txtTVQ.Text = Convert.ToString(mntTVQ);
+            txtMntPayer.Text = Convert.ToString(total);
+
+            // On définit le texte des boutons 
+            // On récupère le type de compte de l'utilisateur connecté 
+            txtTypeCpte.Text = Convert.ToString(BDResto.Instance.GetTypeCompteUtil(Convert.ToInt32(this.Session[Site1.SESSION_IDUTILISATEURCONNECTE])));
+            if (txtTypeCpte.Text == "2")
+            { 
+                // Gérant
+                btn1.Text = "Accepter";
+                btn2.Text = "Refuser";
+            }
         }
 
 
 
 
-        private String recupererInfoCde(int p_NumCde, int p_NumClt, int p_NumAdr)
+        private String recupererInfoCde(int p_NumClt, int p_NumAdr)
         {
             // On récupère le client de la commande
             var client = BDResto.Instance.GetCompte(p_NumClt);
@@ -98,11 +127,79 @@ namespace Restaurant
             // On récupère l'adresse
             var adresse = BDResto.Instance.GetAdresse(p_NumAdr);
 
-            var info = p_NumCde + " " + client.nom + " " + client.prenom;
+            var info = client.nom + " " + client.prenom;
             info = info + "\r\n" + adresse.noCvq + " " + adresse.Rue + " " + adresse.ville + " " + adresse.codePostal;
 
             return info;
             throw new NotImplementedException();
+        }
+
+        protected void BtnAccueil_Click(object sender, EventArgs e)
+        {
+            this.Response.Redirect("~/Default.aspx");
+        }
+
+        protected void BtnDeconnecter_Click(object sender, EventArgs e)
+        {
+            this.Session.Abandon();
+            this.Response.Redirect("~/Default.aspx");
+        }
+
+        protected void BtnListeCde_Click(object sender, EventArgs e)
+        {
+            this.Response.Redirect("~/ListeCommande.aspx");
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            if (txtTypeCpte.Text == "2")
+            {
+                txtMessage.Text = "";
+                if (txtEtatCde.Text != "7")
+                {
+                    txtMessage.Text = "Action impossible. Cette commande n'est pas en attente de validation.";
+                }
+                else
+                {
+                    // On passe la commande à l'état Accepté
+                    BDResto.Instance.SetEtatCde(Convert.ToInt32(txtNumCde.Text), 1);
+                    this.Response.Redirect("~/ListeCommande.aspx");
+                }
+                
+            }
+        }
+
+        protected void clearGridView(GridView p_GridView)
+        {
+            p_GridView.DataSource = null;
+            p_GridView.DataBind();
+            for (int i = 1; p_GridView.Columns.Count > i;)
+            {
+                p_GridView.Columns.RemoveAt(i);
+            }
+        }
+
+        protected void btnAnnuler_Click(object sender, EventArgs e)
+        {
+            this.Response.Redirect("~/ListeCommande.aspx");
+        }
+
+        protected void btn2_Click(object sender, EventArgs e)
+        {
+            if (txtTypeCpte.Text == "2")
+            {
+                txtMessage.Text = "";
+                if (txtEtatCde.Text != "7")
+                {
+                    txtMessage.Text = "Action impossible. Cette commande n'est pas en attente de validation.";
+                }
+                else
+                {
+                    // On passe la commande à l'état Refusé
+                    BDResto.Instance.SetEtatCde(Convert.ToInt32(txtNumCde.Text), 0);
+                    this.Response.Redirect("~/ListeCommande.aspx");
+                }
+            }
         }
     }
 }
