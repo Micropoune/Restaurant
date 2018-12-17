@@ -2,17 +2,17 @@
 
 <asp:Content ID="Content3" ContentPlaceHolderID="Contenu" runat="server">
     
-    
-    <div id="lien">
-        <asp:LinkButton ID="BtnAccueil" runat="server" OnClick="BtnAccueil_Click">Accueil</asp:LinkButton>
-        <asp:LinkButton ID="BtnDeconnecter" runat="server" OnClick="BtnDeconnecter_Click">Déconnecter</asp:LinkButton>
+    <div></div>
+    <div>
+        <asp:LinkButton ID="BtnAccueil" runat="server" OnClick="BtnAccueil_Click" CssClass="BtnAccueil">Accueil</asp:LinkButton>
+        <asp:LinkButton ID="BtnDeconnecter" runat="server" OnClick="BtnDeconnecter_Click" CssClass="BtnDeconnecter">Déconnecter</asp:LinkButton>
     </div>
-
-    <div class="Restaurant">
+    <div></div>
+    <div id="Restaurant" class="Restaurant">
         
-        <asp:Label ID="Restaurant" runat="server" Text="Restaurant : "> </asp:Label>
+        <asp:Label runat="server" Text="Restaurant : " Font-Bold="True" Font-Size="Large" ></asp:Label>
         
-        <asp:TextBox ID="txtNomResto" runat="server" Width="482px" BorderStyle="None"></asp:TextBox>
+        <asp:TextBox runat="server" Width="749px" BorderStyle="None" ID="txtNomResto" Font-Bold="True" Font-Size="Large"></asp:TextBox>
         
     </div>
 
@@ -21,11 +21,10 @@
     <fieldset class="Mets">
         <div class="EtatCommande">
             <asp:Label ID="lblEtatCommande" runat="server" Text="Etat Commande : " Width="120px"></asp:Label>
-            <asp:DropDownList ID="ddlEtatCommande" runat="server" DataSourceID="DSEtatCommande" DataTextField="Etat" DataValueField="idEtat" AutoPostBack="True">
+            <asp:DropDownList ID="ddlEtatCommande" runat="server" AutoPostBack="True">
             </asp:DropDownList>
-            <asp:SqlDataSource ID="DSEtatCommande" runat="server" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\RestaurantConcept.mdf;Integrated Security=True;Connect Timeout=30" ProviderName="System.Data.SqlClient" SelectCommand="SELECT [idEtat], [Etat] FROM [etatcommandes]"></asp:SqlDataSource>
         </div>
-        <div class="Commande">
+        <div class="RechCommande">
             <asp:Label ID="lblNumCommande" runat="server" Text="N° Commande : " Width="120px"></asp:Label>
             <asp:TextBox ID="numCommande" runat="server" Width="80px"></asp:TextBox>
         </div>

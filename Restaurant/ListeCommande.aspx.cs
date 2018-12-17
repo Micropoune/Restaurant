@@ -16,7 +16,8 @@ namespace Restaurant
         {
             
             txtMessage.Text = "";
-
+            
+            
             // Si on est avec état différent de Autre, on doit sélectionner que
             // les commandes avec l'état choisi
             if (ddlEtatCommande.SelectedValue == "")
@@ -26,27 +27,16 @@ namespace Restaurant
                 //ddlEtatCommande.SelectedValue = "7";
             }
 
-            // On récupère le type de compte de l'utilisateur connecté 
-            // car seul le gérant peut visualiser toutes les commandes
-            var typeCompte = BDResto.Instance.GetTypeCompteUtil(Convert.ToInt32(this.Session[Site1.SESSION_IDUTILISATEURCONNECTE]));
-            if (typeCompte != 2)
+            // Chargement de la dropdownlist avec les valeurs possibles
+            // selon la personne connectée
+            if (!IsPostBack)
             {
-                
-                if (typeCompte == 3)
-                {
-                    // Le chef peut voir les commandes acceptée ou en préparation
-                    ddlEtatCommande.SelectedIndex = 1;
-                    
-                }
-                else
-                {
-                    if (typeCompte == 4)
-                    {
-                        // Le livreur peut voir les commandes prêtes à livrer
-                        ddlEtatCommande.SelectedIndex = 3;
-                    }
-                }
-                ddlEtatCommande.Enabled = false;
+                var listeEtat = chargerDDL();
+                ddlEtatCommande.DataValueField = "idEtat";
+                ddlEtatCommande.DataTextField = "etat";
+
+                ddlEtatCommande.DataSource = listeEtat;
+                ddlEtatCommande.DataBind();
             }
 
             // On charge la table contenant les commandes avec le bon état
@@ -111,6 +101,22 @@ namespace Restaurant
                     // Initialise la valeur du champ HeaderText.
                     bfield.HeaderText = col.ColumnName;
 
+                    if (col.ColumnName == "Nom du client")
+                    {
+                        bfield.ItemStyle.HorizontalAlign = HorizontalAlign.Left;
+                    }
+                    else
+                    {
+                        if (col.ColumnName == "Montant Total")
+                        {
+                            bfield.ItemStyle.HorizontalAlign = HorizontalAlign.Right;
+                        }
+                        else
+                        {
+                            bfield.ItemStyle.HorizontalAlign = HorizontalAlign.Center;
+                        }
+                    }
+
                     // Ajoute le champ lié nouvellement créé au GridView.
                     gvCommandes.Columns.Add(bfield);
 
@@ -125,13 +131,13 @@ namespace Restaurant
                 gvCommandes.DataBind();
 
 
-                //this.Session[Site1.SESSION_IDRESTO] = "1";
+
             }
             
 
             // Affichage du nom du restaurant
             var Resto = BDResto.Instance.GetAllRestaurants();
-            txtNomResto.Text = (BDResto.Instance.GetRestaurant(Convert.ToInt32(this.Session[Site1.SESSION_IDRESTO])).nomResto).ToString();
+            txtNomResto.Text = BDResto.Instance.GetRestaurant(Convert.ToInt32(this.Session[Site1.SESSION_IDRESTO])).nomResto.ToString();
 
             if (!IsPostBack)
             {
@@ -217,6 +223,50 @@ namespace Restaurant
         protected void btnAnnuler_Click(object sender, EventArgs e)
         {
             this.Response.Redirect("~/Default.aspx");
+        }
+
+        protected List<etatcommandes> chargerDDL()
+        {
+            int cpt = 0;
+            List<etatcommandes> element = new List<etatcommandes>();
+
+            etatcommandes etat;
+
+            var typeCompte = BDResto.Instance.GetTypeCompteUtil(Convert.ToInt32(this.Session[Site1.SESSION_IDUTILISATEURCONNECTE]));
+            // Le gérant a accès à tous les états
+            if (typeCompte == 2)
+            {
+                var listeEtat = BDResto.Instance.GetAllEtatsCde();
+                foreach (etatcommandes item in listeEtat)
+                {
+                    element.Add(item);
+                    cpt += 1;
+                }
+            }
+            else
+            {
+                if (typeCompte == 3)
+                {
+                    // Le chef peut voir les commandes acceptée ou en préparation
+                    etat = BDResto.Instance.GetEtatCde(1);
+                    element.Add(etat);
+                    etat = BDResto.Instance.GetEtatCde(2);
+                    element.Add(etat);
+
+                }
+                else
+                {
+                    if (typeCompte == 4)
+                    {
+                        // Le livreur peut voir les commandes prêtes à livrer
+                        etat = BDResto.Instance.GetEtatCde(3);
+                        element.Add(etat);
+                    }
+                }
+
+            }
+            
+            return element;
         }
     }
 }

@@ -13,31 +13,31 @@ namespace Restaurant {
     public partial class AfficherCommande {
         
         /// <summary>
-        /// Contrôle BtnAccueil.
+        /// Contrôle LinkButton1.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton BtnAccueil;
+        protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
         
         /// <summary>
-        /// Contrôle BtnDeconnecter.
+        /// Contrôle LinkButton2.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton BtnDeconnecter;
+        protected global::System.Web.UI.WebControls.LinkButton LinkButton2;
         
         /// <summary>
-        /// Contrôle BtnListeCde.
+        /// Contrôle LinkButton3.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton BtnListeCde;
+        protected global::System.Web.UI.WebControls.LinkButton LinkButton3;
         
         /// <summary>
         /// Contrôle txtTypeCpte.
@@ -85,13 +85,22 @@ namespace Restaurant {
         protected global::System.Web.UI.WebControls.Label lblInfoCommande;
         
         /// <summary>
-        /// Contrôle txtInfoClient.
+        /// Contrôle txtNomClient.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtInfoClient;
+        protected global::System.Web.UI.WebControls.TextBox txtNomClient;
+        
+        /// <summary>
+        /// Contrôle txtAdrClient.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtAdrClient;
         
         /// <summary>
         /// Contrôle txtMessage.

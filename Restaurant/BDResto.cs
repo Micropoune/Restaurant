@@ -270,7 +270,16 @@ namespace Restaurant
             return m_BD.etatcommandes;
         }
 
-        
+        /// <summary>
+        /// Retourne l'état de commande dont l'ID est passé
+        /// en paramètre
+        ///   
+        /// </summary>
+        public etatcommandes GetEtatCde(int p_EtatCde)
+        {
+            return m_BD.etatcommandes.SingleOrDefault(
+                u => (u.idEtat == p_EtatCde));
+        }
         #endregion
 
     }
