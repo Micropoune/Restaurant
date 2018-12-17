@@ -18,11 +18,20 @@ namespace Restaurant
 		{
 			menus menuAAjouter = new menus();
 
-			menuAAjouter.titreMenu = txtTitreMenu.Text;
 			
+
+			menuAAjouter.titreMenu = txtTitreMenu.Text;
 			menuAAjouter.actif = Convert.ToInt16(ddlStatut.SelectedValue);
 			menuAAjouter.commentaires = txtCommentaires.Text;
-			menuAAjouter.idResto = Convert.ToInt32(ddlResto.SelectedValue);
+
+			var listeRestaurant = BDResto.Instance.GetAllRestaurants().SingleOrDefault(c =>
+				  c.nomResto.Equals(this.ddlResto.SelectedValue));
+
+			menuAAjouter.idResto = listeRestaurant.idResto; 
+			BDResto.Instance.ajouterMenu(menuAAjouter);
+			BDResto.Instance.Sauvegarder();
+			this.Session[Site1.SESSION_IDMENU]= listeRestaurant.idResto;
+			Response.Redirect("~/CreationMenu.aspx");
 		}
 
 		protected void btnAnnuler_Click(object sender, EventArgs e)

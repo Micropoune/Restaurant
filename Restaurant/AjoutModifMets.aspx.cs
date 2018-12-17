@@ -20,7 +20,7 @@ namespace Restaurant
 		{
 			produits nouveauMets = new produits();
 
-			//nouveauMets.idProduit=int.Parse(this.txtIdMets.Text);
+		
 
 			var listeCategorie = BDResto.Instance.GetAllCategorie().SingleOrDefault(c =>
 					  (c.nomCategorie.Equals(this.ddlCategorie.SelectedValue)));

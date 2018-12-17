@@ -13,12 +13,14 @@ namespace Restaurant
 		public static string SESSION_IDUTILISATEURCONNECTE = "IDUtilisateurConnecte";
 		public static string SESSION_IDRESTO = "idResto";
 		public static string SESSION_IDCOMMANDE = "idCommande";
+		public static string SESSION_IDMENU = "idMenu";
 		protected void Page_Load(object sender, EventArgs e)
 
 		{
             // On considère que le gérant est signé car on doit tester l'acceptation d'une commande
             this.Session[Site1.SESSION_IDUTILISATEURCONNECTE] = 4;
             this.Session[Site1.SESSION_IDRESTO] = 1;
+			this.Session[Site1.SESSION_IDMENU] = 1;
             //this.Session[Site1.SESSION_IDUTILISATEURCONNECTE] = 2;
 
 

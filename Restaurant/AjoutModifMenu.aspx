@@ -4,7 +4,7 @@
 	<fieldset>
 	<legend>Menu</legend>
 	<asp:Label ID="lblTitreMenu" runat="server" Text="Titre menu :" Width="140px"></asp:Label>
-	<asp:TextBox ID="txtTitreMenu" runat="server"></asp:TextBox>
+	<asp:TextBox ID="txtTitreMenu" runat="server" Width="200px"></asp:TextBox>
 	<br />
 	<br />
 	<asp:Label ID="status" runat="server" Text="Status :" Width="140px"></asp:Label>
@@ -15,7 +15,7 @@
 	<br />
 	<br />
 	<asp:Label ID="lblCommentaires" runat="server" Text="Commentaires :" Width="140px"></asp:Label>
-	<asp:TextBox ID="txtCommentaires" runat="server"></asp:TextBox>
+	<asp:TextBox ID="txtCommentaires" runat="server" Height="56px" Width="200px"></asp:TextBox>
 	<br />
 	<br />
 	<asp:Label ID="lblIdResto" runat="server" Text="Restaurant:" Width="140px"></asp:Label>
