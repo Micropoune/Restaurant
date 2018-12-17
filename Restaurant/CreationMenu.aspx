@@ -38,7 +38,11 @@
 			 <SortedDescendingCellStyle BackColor="#FFFDF8" />
 			 <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
 		 </asp:GridView>
-		 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT produits.nomProd, produits.descProd, produits.prixProd, produits.imgProd, menu_produits.idMenu FROM menu_produits INNER JOIN produits ON menu_produits.idProduit = produits.idProduit"></asp:SqlDataSource>
+		 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT produits.nomProd, produits.descProd, produits.prixProd, produits.imgProd, menu_produits.idMenu FROM menu_produits INNER JOIN produits ON menu_produits.idProduit = produits.idProduit WHERE (menu_produits.idMenu = @idMenu)">
+			 <SelectParameters>
+				 <asp:Parameter DefaultValue="1" Name="idMenu" />
+			 </SelectParameters>
+		 </asp:SqlDataSource>
 		<br />
 			<fieldset class="gestionMets">
 				<legend> Gestions mets</legend>

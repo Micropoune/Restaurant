@@ -30,6 +30,8 @@ namespace Restaurant
 			menuAAjouter.idResto = listeRestaurant.idResto; 
 			BDResto.Instance.ajouterMenu(menuAAjouter);
 			BDResto.Instance.Sauvegarder();
+
+			//var listeMenu=BDResto.Instance.ge
 			this.Session[Site1.SESSION_IDMENU]= listeRestaurant.idResto;
 			Response.Redirect("~/CreationMenu.aspx");
 		}

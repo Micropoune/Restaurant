@@ -88,7 +88,10 @@ namespace Restaurant
 			return this.m_BD.menus.SingleOrDefault(
 				Menu => (Menu.idMenu == p_id));
 		}
-
+		public IQueryable<menus> GetAllMenus()
+		{
+			return m_BD.menus;
+		}
 		#endregion
 
 		#region Mets
