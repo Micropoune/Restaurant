@@ -1,4 +1,4 @@
-﻿7<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="PageMaitre.Master.cs" Inherits="Restaurant.Site1" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="PageMaitre.Master.cs" Inherits="Restaurant.Site1" %>
 
 <!DOCTYPE html>
 <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
