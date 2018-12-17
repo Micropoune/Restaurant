@@ -28,11 +28,14 @@ namespace Restaurant
 				  c.nomResto.Equals(this.ddlResto.SelectedValue));
 
 			menuAAjouter.idResto = listeRestaurant.idResto; 
-			BDResto.Instance.ajouterMenu(menuAAjouter);
-			BDResto.Instance.Sauvegarder();
+			
 
-			//var listeMenu=BDResto.Instance.ge
-			this.Session[Site1.SESSION_IDMENU]= listeRestaurant.idResto;
+			var listeMenu=BDResto.Instance.GetAllMenus().SingleOrDefault(c =>
+				  c.titreMenu.Equals(this.txtTitreMenu.Text));
+			this.Session[Site1.SESSION_IDMENU]= listeMenu.idMenu;
+
+
+
 			Response.Redirect("~/CreationMenu.aspx");
 		}
 

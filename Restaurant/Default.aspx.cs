@@ -43,5 +43,10 @@ namespace Restaurant
 		{
 			Response.Redirect("~/ListeCommande.aspx");
 		}
+
+		protected void btnCreationCompte_Click(object sender, EventArgs e)
+		{
+			Response.Redirect("~/Page_CreerCompte.aspx");
+		}
 	}
 }

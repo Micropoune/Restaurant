@@ -16,7 +16,8 @@ namespace Restaurant
 			{
 				int idMenu = (int)this.Session[Site1.SESSION_IDMENU];
 				menus menuAAfficher = BDResto.Instance.GetMenu(idMenu);
-				
+				ddlTitre.SelectedValue = menuAAfficher.titreMenu;
+		
 			}
 		}
 
@@ -33,7 +34,7 @@ namespace Restaurant
 
 		protected void lnkAccueil_Click(object sender, EventArgs e)
 		{
-			Response.Redirect("~/EnConstruction.aspx");
+			Response.Redirect("~/Default.aspx");
 		}
 
 		protected void lnkDeconnecter_Click(object sender, EventArgs e)
