@@ -9,17 +9,15 @@ namespace Restaurant
 {
 	public partial class CreationMenu : System.Web.UI.Page
 	{
-		menus menuAAjouter = new menus();
+	
 		protected void Page_Load(object sender, EventArgs e)
 		{
-
-		}
-
-		protected void btnEnregistrer_Click(object sender, EventArgs e)
-		{
-			menuAAjouter.idMenu = Convert.ToInt32(this.txtIdMenu.Text);
-			menuAAjouter.titreMenu = this.txtDescriptionMenu.Text;
-			BDResto.Instance.Sauvegarder();
+			if (this.Session[Site1.SESSION_IDMENU] != null)
+			{
+				int idMenu = (int)this.Session[Site1.SESSION_IDMENU];
+				menus menuAAfficher = BDResto.Instance.GetMenu(idMenu);
+				
+			}
 		}
 
 		protected void btnAnnuler_Click(object sender, EventArgs e)
@@ -27,19 +25,6 @@ namespace Restaurant
 			Response.Redirect("~/Default.aspx");
 		}
 
-		protected void valNomUnique_ServerValidate(object source, ServerValidateEventArgs args)
-		{
-			menus menuReponse = BDResto.Instance.GetMenu(Convert.ToInt32(txtIdMenu.Text));
-			if (menuReponse == null)
-			{
-				args.IsValid = true;
-			}
-			else
-			{
-				args.IsValid = false;
-			}
-
-		}
 
 		protected void btnAjouterMets_Click(object sender, EventArgs e)
 		{

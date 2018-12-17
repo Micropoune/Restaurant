@@ -112,19 +112,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AjoutModifMenu.aspx.cs">
-      <DependentUpon>AjoutModifMenu.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AjoutModifMenu.aspx.designer.cs">
-      <DependentUpon>AjoutModifMenu.aspx</DependentUpon>
-    </Compile>
     <Compile Include="AfficherCommande.aspx.cs">
       <DependentUpon>AfficherCommande.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AfficherCommande.aspx.designer.cs">
       <DependentUpon>AfficherCommande.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AjoutModifMenu.aspx.cs">
+      <DependentUpon>AjoutModifMenu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AjoutModifMenu.aspx.designer.cs">
+      <DependentUpon>AjoutModifMenu.aspx</DependentUpon>
     </Compile>
     <Compile Include="AjoutModifMets.aspx.cs">
       <DependentUpon>AjoutModifMets.aspx</DependentUpon>
