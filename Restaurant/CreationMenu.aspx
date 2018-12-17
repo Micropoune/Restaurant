@@ -40,7 +40,7 @@
 		 </asp:GridView>
 		 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT produits.nomProd, produits.descProd, produits.prixProd, produits.imgProd, menu_produits.idMenu FROM menu_produits INNER JOIN produits ON menu_produits.idProduit = produits.idProduit WHERE (menu_produits.idMenu = @idMenu)">
 			 <SelectParameters>
-				 <asp:Parameter DefaultValue="1" Name="idMenu" />
+				 <asp:SessionParameter DefaultValue="" Name="idMenu" SessionField="ID_MENU" />
 			 </SelectParameters>
 		 </asp:SqlDataSource>
 		<br />

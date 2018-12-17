@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.CSharp.RuntimeBinder;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -17,6 +18,7 @@ namespace Restaurant
 				int idMenu = (int)this.Session[Site1.SESSION_IDMENU];
 				menus menuAAfficher = BDResto.Instance.GetMenu(idMenu);
 				ddlTitre.SelectedValue = menuAAfficher.titreMenu;
+				//GridView1.
 		
 			}
 		}
@@ -56,5 +58,6 @@ namespace Restaurant
 		{
 			Response.Redirect("~/EnConstruction.aspx");
 		}
+
 	}
 }

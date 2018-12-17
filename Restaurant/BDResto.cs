@@ -92,6 +92,10 @@ namespace Restaurant
 		{
 			return m_BD.menus;
 		}
+		public IQueryable<menu_produits> GetAllMenuProduit()
+		{
+			return m_BD.menu_produits;
+		}
 		#endregion
 
 		#region Mets

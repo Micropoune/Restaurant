@@ -21,7 +21,7 @@ namespace Restaurant
 
 		protected void btnCommanderMets_Click(object sender, EventArgs e)
 		{
-
+			Response.Redirect("~/CommanderMets.aspx");
 		}
 
 		protected void btnCreationMenu_Click(object sender, EventArgs e)

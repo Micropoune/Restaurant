@@ -133,6 +133,13 @@
     <Compile Include="AjoutModifMets.aspx.designer.cs">
       <DependentUpon>AjoutModifMets.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AjoutResto.aspx.cs">
+      <DependentUpon>AjoutResto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AjoutResto.aspx.designer.cs">
+      <DependentUpon>AjoutResto.aspx</DependentUpon>
+    </Compile>
     <Compile Include="BDResto.cs" />
     <Compile Include="CommanderMets.aspx.cs">
       <DependentUpon>CommanderMets.aspx</DependentUpon>
@@ -197,6 +204,7 @@
     <Content Include="AfficherCommande.aspx" />
     <Content Include="AjoutModifMenu.aspx" />
     <Content Include="AjoutModifMets.aspx" />
+    <Content Include="AjoutResto.aspx" />
     <Content Include="App_Data\RestaurantConcept.mdf" />
     <Content Include="App_Data\RestaurantConcept_log.ldf">
       <DependentUpon>RestaurantConcept.mdf</DependentUpon>
