@@ -10,24 +10,24 @@
 namespace Restaurant {
     
     
-    public partial class Accueil {
+    public partial class testCommanderMet {
         
         /// <summary>
-        /// btnAuthentification control.
+        /// GridView1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAuthentification;
+        protected global::System.Web.UI.WebControls.GridView GridView1;
         
         /// <summary>
-        /// btnCreationCompte control.
+        /// SqlDataSource1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCreationCompte;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
     }
 }

@@ -20,7 +20,7 @@
 		
 		
 		 <br />
-		<br />
+		<h2>Menu</h2><br />
         <asp:TextBox ID="txtMessage" runat="server" BorderStyle="None" ForeColor="Red" Width="647px"></asp:TextBox>
         <asp:GridView ID="gvMenu" runat="server" AutoGenerateColumns="False" >
             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
@@ -39,7 +39,7 @@
             <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
         </asp:GridView>
 			<br />
-		 <br />
+		<h2>Produits</h2> <br />
 		 <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" DataKeyNames="idProduit">
 			 <Columns>
 				 <asp:CommandField ButtonType="Image" SelectImageUrl="~/images/fleche.png" ShowSelectButton="True" />
@@ -62,6 +62,7 @@
 		 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [nomProd], [descProd], [prixProd], [idProduit] FROM [produits]"></asp:SqlDataSource>
 		 <br />
 		 <asp:Button ID="btnAjoutMetMenu" runat="server" OnClick="btnAjouterMetsMenu_Click" Text="Ajouter mets au menu" />
+		 <br />
 		 <br />
 			<fieldset class="gestionMets">
 				<legend> Gestions mets</legend>

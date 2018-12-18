@@ -18,12 +18,12 @@ namespace Restaurant
 			{
 				txtIdMenu.Text = ddlMenu.SelectedValue.ToString();
 			}
-			//this.Session[Site1.SESSION_IDMENU] = ddlMenu.SelectedValue.ToString();
+			
 			if (!IsPostBack)
             {
-				if (this.Session[Site1.SESSION_IDMENU] == "")
+				if (this.Session[Site1.SESSION_IDMENU] == null)
                 {
-                    this.Session[Site1.SESSION_IDMENU] = 0;
+                    this.Session[Site1.SESSION_IDMENU] = 1;
                 }
                 var idMenu = Convert.ToInt32(this.Session[Site1.SESSION_IDMENU]);
                 menus menuAAfficher = BDResto.Instance.GetMenu(idMenu);

@@ -40,17 +40,9 @@ namespace Restaurant
                 
 
                 BDResto.Instance.Sauvegarder();
-
-                // Si le type de compte de l'utilisateur connecté est un client, on doit le diriger vers
-                // une page spécifique. Comme elle n'est pas développée, on l'enverra sur une page en construction
-                if (utilisateurConnecte.notpCmpt == 5)
-                {
-                    this.Response.Redirect("~/EnConstruction.aspx");
-                }
-                else
-                {
-                    this.Response.Redirect("~/Default.aspx");
-                }
+				this.Response.Redirect("~/Default.aspx");
+				this.Response.Redirect("~/Default.aspx");
+                
             }
         }
         //methode Utilisateur qui fait la validation côté serveur

@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PageMaitre.Master" AutoEventWireup="true" CodeBehind="AjoutModifMenu.aspx.cs" Inherits="Restaurant.AjoutModifMenu" %>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="Contenu" runat="server">
+	<asp:LinkButton ID="lnkDeconnecter" runat="server" OnClick="lnkDeconnecter_Click" CssClass="BtnDeconnecter">Déconnecter</asp:LinkButton>
 	<fieldset>
 	<legend>Menu</legend>
 		<br />

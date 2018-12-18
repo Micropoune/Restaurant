@@ -37,6 +37,11 @@ namespace Restaurant
 		{
 			Response.Redirect("~/Default.aspx");
 		}
-		
+
+		protected void lnkDeconnecter_Click(object sender, EventArgs e)
+		{
+			this.Session.Abandon();
+			Response.Redirect("~/Authentification.aspx");
+		}
 	}
 }

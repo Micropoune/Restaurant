@@ -18,22 +18,25 @@ namespace Restaurant
 
 		protected void btnEnregistrer_Click(object sender, EventArgs e)
 		{
-			produits nouveauMets = new produits();
+			if (this.Page.IsValid)
+			{
+				produits nouveauMets = new produits();
 
-		
 
-			var listeCategorie = BDResto.Instance.GetAllCategorie().SingleOrDefault(c =>
-					  (c.nomCategorie.Equals(this.ddlCategorie.SelectedValue)));
 
-			nouveauMets.idCategorie = listeCategorie.idCategorie;
-			nouveauMets.nomProd = this.txtNomMets.Text;
-			nouveauMets.descProd = this.txtDescriptionMet.Text;
-			nouveauMets.prixProd = Convert.ToDecimal(this.txtPrixMets.Text);
-			nouveauMets.imgProd = this.m_cheminImage;
+				var listeCategorie = BDResto.Instance.GetAllCategorie().SingleOrDefault(c =>
+						  (c.nomCategorie.Equals(this.ddlCategorie.SelectedValue)));
 
-			BDResto.Instance.ajouterMets(nouveauMets);
-			BDResto.Instance.Sauvegarder();
-			Response.Redirect("~/CreationMenu.aspx");
+				nouveauMets.idCategorie = listeCategorie.idCategorie;
+				nouveauMets.nomProd = this.txtNomMets.Text;
+				nouveauMets.descProd = this.txtDescriptionMet.Text;
+				nouveauMets.prixProd = Convert.ToDecimal(this.txtPrixMets.Text);
+				nouveauMets.imgProd = this.m_cheminImage;
+
+				BDResto.Instance.ajouterMets(nouveauMets);
+				BDResto.Instance.Sauvegarder();
+				Response.Redirect("~/CreationMenu.aspx");
+			}
 		}
 
 		protected void btnAnnuler_Click(object sender, EventArgs e)
@@ -93,7 +96,7 @@ namespace Restaurant
 					Image.ImageUrl = "~/" + imgPath;
 					
 					Page.ClientScript.RegisterClientScriptBlock(typeof(Page),
-					"Alert", "alert('Image sauvegard!')", true);
+					"Alert", "alert('Image sauvegardée!')", true);
 					
 				}
 				this.m_cheminImage = imgPath;

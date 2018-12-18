@@ -211,6 +211,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RestoConcept.dbml</DependentUpon>
     </Compile>
+    <Compile Include="testCommanderMet.aspx.cs">
+      <DependentUpon>testCommanderMet.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="testCommanderMet.aspx.designer.cs">
+      <DependentUpon>testCommanderMet.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -236,6 +243,7 @@
     <Content Include="images\pizzaMerveilleuse.jpg" />
     <Content Include="ListeCommande.aspx" />
     <Content Include="Page_CreerCompte.aspx" />
+    <Content Include="testCommanderMet.aspx" />
     <Content Include="web.config" />
     <Content Include="RestoConcept.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>

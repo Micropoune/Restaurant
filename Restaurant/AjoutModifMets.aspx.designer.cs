@@ -40,6 +40,15 @@ namespace Restaurant {
         protected global::System.Web.UI.WebControls.LinkButton lnkConsulterMenu;
         
         /// <summary>
+        /// ValidationAjoutMets control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary ValidationAjoutMets;
+        
+        /// <summary>
         /// lblCategorie control.
         /// </summary>
         /// <remarks>
@@ -85,6 +94,15 @@ namespace Restaurant {
         protected global::System.Web.UI.WebControls.TextBox txtNomMets;
         
         /// <summary>
+        /// ValidateurNomMets control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator ValidateurNomMets;
+        
+        /// <summary>
         /// lbldescription control.
         /// </summary>
         /// <remarks>
@@ -101,6 +119,15 @@ namespace Restaurant {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDescriptionMet;
+        
+        /// <summary>
+        /// ValidateurDescription control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator ValidateurDescription;
         
         /// <summary>
         /// Label1 control.
@@ -164,6 +191,15 @@ namespace Restaurant {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPrixMets;
+        
+        /// <summary>
+        /// ValidateurPrix control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator ValidateurPrix;
         
         /// <summary>
         /// btnEnregistrer control.
