@@ -113,11 +113,11 @@ namespace Restaurant
 
 		#endregion
 		#region Menu Produit
-		public void ajouterMetMenu(menu_produits item, menus p_menu, produits p_produits)
+		public void ajouterMetMenu(int p_idMenu, int p_idProduits)
 		{
-			//menu_produits item = new menu_produits();
-			item.idProduit = p_produits.idProduit;
-			item.idMenu = p_menu.idMenu;
+			menu_produits item = new menu_produits();
+			item.idProduit = p_idProduits;
+			item.idMenu = p_idMenu;
 			this.m_BD.menu_produits.InsertOnSubmit(item);
 		
 		}

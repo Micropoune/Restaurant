@@ -14,11 +14,10 @@ namespace Restaurant
         List<menu_produits> tableauSel = new List<menu_produits>();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+			//this.Session[Site1.SESSION_IDMENU] = ddlMenu.SelectedValue.ToString();
+			if (!IsPostBack)
             {
-
-
-                if (this.Session[Site1.SESSION_IDMENU] == "")
+				if (this.Session[Site1.SESSION_IDMENU] == "")
                 {
                     this.Session[Site1.SESSION_IDMENU] = 0;
                 }
@@ -163,7 +162,8 @@ namespace Restaurant
 
         protected void ddlMenu_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Page_Load(sender, e);
+			this.Session[Site1.SESSION_IDMENU] = ddlMenu.SelectedValue.ToString();
+			Page_Load(sender, e);
         }
 
         protected List<menu_produits> chargementTable(String p_idMenu)
@@ -187,5 +187,16 @@ namespace Restaurant
             }
         }
 
-    }
+
+
+		protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			this.Session[Site1.SESSION_IDPRODUIT] = this.GridView1.SelectedRow.Cells[1].Text;
+		}
+
+		protected void btnAjouterMetsMenu_Click(object sender, EventArgs e)
+		{
+			BDResto.Instance.ajouterMetMenu(Convert.ToInt32(this.Session[Site1.SESSION_IDMENU]),Convert.ToInt32(this.Session[Site1.SESSION_IDPRODUIT]));
+		}
+	}
 }

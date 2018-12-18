@@ -11,17 +11,44 @@ namespace Restaurant
     public partial class Page_CreerCompte : System.Web.UI.Page
     {
 
-        int numCompte = 1;
-        int idAdresse = 1;
 
         public bool compteValide()
         {
             return this.Page.IsValid;
         }
 
+       
         public void creerCompte()
         {
+            comptes newCompte = new comptes();
+            adresses newAdresse = new adresses();
 
+           
+
+            newCompte.notpCmpt = 5;
+            newCompte.prenom = this.TxtPrenom.Text;
+            newCompte.nom = this.TxtNom.Text;
+            newCompte.telephone = this.TxtTelephone.Text;
+            newCompte.Courriel = this.TxtCourriel.Text;
+            newCompte.nomUtilisateur = this.TxtNomUtilisateur.Text;
+            newCompte.motPasse = this.TxtMotDePasse.Text;
+            newCompte.commentaires = this.TxtCommentaire.Text;
+            newCompte.typecomptes = new typecomptes();
+            newCompte.typecomptes.idtype = 5;
+            newCompte.typecomptes.nomType = "Client";
+            newCompte.Actif = 1;
+
+
+            newAdresse.noCvq = this.TxtNoCvq.Text;
+            newAdresse.Rue = this.TxtRue.Text;
+            newAdresse.codePostal = this.TxtCodePostal.Text;
+            newAdresse.province = this.LBProvince.SelectedItem.Text;
+            newAdresse.ville = this.TxtVille.Text;
+            newAdresse.telephone = newCompte.telephone;
+            newCompte.adresses = newAdresse;
+
+            BDResto.Instance.ajouterComptes(newCompte);
+            BDResto.Instance.Sauvegarder();
         }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -33,49 +60,9 @@ namespace Restaurant
         {
             if (this.Page.IsValid)
             {
-                comptes newCompte = new comptes();
-                adresses newAdresse = new adresses();
+                creerCompte();
 
-                foreach (comptes user in BDResto.Instance.GetAllComptes())
-                {
-                    if (user.noAdrs == this.numCompte)
-                    {
-                        this.numCompte++;
-                    }
-                }
-
-                newCompte.noCompte = numCompte;
-                newCompte.notpCmpt = 5;
-                newCompte.prenom = this.TxtPrenom.Text;
-                newCompte.nom = this.TxtNom.Text;
-                newCompte.nomUtilisateur = this.TxtNomUtilisateur.Text;
-                newCompte.telephone = this.TxtTelephone.Text;
-                newCompte.motPasse = this.TxtMotDePasse.Text;
-                newCompte.Courriel = this.TxtCourriel.Text;
-                newCompte.Actif = 1;
-
-
-                foreach (comptes user in BDResto.Instance.GetAllComptes())
-                {
-                    if (user.noAdrs == this.idAdresse)
-                    {
-                        this.idAdresse++;
-                    }
-                }
-
-                newAdresse.idAdrs = this.idAdresse;
-                newAdresse.noCvq = this.TxtNoCvq.Text;
-                newAdresse.Rue = this.TxtRue.Text;
-                newAdresse.codePostal = this.TxtCodePostal.Text;
-                newAdresse.province = this.LBProvince.SelectedItem.Text;
-                newCompte.noAdrs = this.idAdresse;
-                newCompte.adresses = newAdresse;
-
-                BDResto.Instance.ajouterComptes(newCompte);
-                BDResto.Instance.Sauvegarder();
-
-
-                Response.Redirect("Default.aspx");
+                Response.Redirect("~/Accueil.aspx");
             }
 
 
@@ -84,6 +71,40 @@ namespace Restaurant
         protected void TxtTelephone_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        protected void TxtVille_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        protected void CustomValidator1_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            foreach (comptes user in BDResto.Instance.GetAllComptes())
+            {
+                if (user.nomUtilisateur == this.TxtNomUtilisateur.Text)
+                {
+                    args.IsValid = false;
+                }
+
+                else
+                {
+                    args.IsValid = true;
+                }
+            }
+        }
+
+        protected void TaillePasswordValidator_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            if(this.TxtMotDePasse.Text.Length < 8)
+            {
+                args.IsValid = false;
+            }
+
+            else
+            {
+                args.IsValid = true;
+            }
         }
     }
 }

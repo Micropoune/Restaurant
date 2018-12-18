@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style type="text/css" >
         .auto-style1 {
-            height: 1050px;
+            height: 1168px;
         }
         .HLink {
             margin:10px;
@@ -51,6 +51,7 @@
         &nbsp;
         <asp:TextBox ID="TxtNomUtilisateur" runat="server"></asp:TextBox>
         <asp:RequiredFieldValidator ID="valNomUser" runat="server" ControlToValidate="TxtNomUtilisateur" ErrorMessage="Le champs ne doit pas être vide" ForeColor="Red">*</asp:RequiredFieldValidator>
+        <asp:CustomValidator ID="CVNomUser" runat="server" ControlToValidate="TxtNomUtilisateur" ErrorMessage="Ce nom est déjà utilisé" ForeColor="Red" OnServerValidate="CustomValidator1_ServerValidate">*</asp:CustomValidator>
         <br />
 &nbsp;&nbsp;&nbsp;
         <br />
@@ -84,24 +85,31 @@
         <asp:TextBox ID="TxtCodePostal" runat="server">A1A1A1</asp:TextBox>
         <asp:RegularExpressionValidator ID="REVACodePostal" runat="server" ControlToValidate="TxtCodePostal" ErrorMessage="Le format n'est pas valide" ForeColor="Red" ValidationExpression="[A-Z]{1}\d{1}[A-Z]{1}\d{1}[A-Z]\d{1}">*</asp:RegularExpressionValidator>
         <br />
+        <br />
+&nbsp;&nbsp;&nbsp;
+        <asp:Label ID="LblVille" runat="server" Text="Ville"></asp:Label>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:TextBox ID="TxtVille" runat="server" OnTextChanged="TxtVille_TextChanged"></asp:TextBox>
+        <br />
 &nbsp;&nbsp;&nbsp;
         <br />
 &nbsp;&nbsp;&nbsp; 
          <asp:Label ID="LblProvince" runat="server" Text="Province:"></asp:Label>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:ListBox ID="LBProvince" runat="server" CssClass="auto-style2" Height="26px" ItemType="String" Rows="1" Width="187px">
-            <asp:ListItem>Alberta</asp:ListItem>
-            <asp:ListItem>Colombie Britanique</asp:ListItem>
-            <asp:ListItem>Île-du-Prince-Édouard</asp:ListItem>
-            <asp:ListItem>Manitoba</asp:ListItem>
-            <asp:ListItem>Nouvelle-Écosse</asp:ListItem>
-            <asp:ListItem>Ontario</asp:ListItem>
-            <asp:ListItem>Québec</asp:ListItem>
-            <asp:ListItem>Saskatchewan</asp:ListItem>
-            <asp:ListItem>Terre-Neuve</asp:ListItem>
-            <asp:ListItem>Territoire du Nord-Ouest</asp:ListItem>
-            <asp:ListItem>Vancouver</asp:ListItem>
-            <asp:ListItem>Yukon</asp:ListItem>
+            <asp:ListItem>AB</asp:ListItem>
+            <asp:ListItem>BC</asp:ListItem>
+            <asp:ListItem>MB</asp:ListItem>
+            <asp:ListItem>NB</asp:ListItem>
+            <asp:ListItem>YKNL</asp:ListItem>
+            <asp:ListItem>NS</asp:ListItem>
+            <asp:ListItem>NT</asp:ListItem>
+            <asp:ListItem>NU</asp:ListItem>
+            <asp:ListItem>ON</asp:ListItem>
+            <asp:ListItem>PE</asp:ListItem>
+            <asp:ListItem>QC</asp:ListItem>
+            <asp:ListItem>SK</asp:ListItem>
+            <asp:ListItem Value="YK"></asp:ListItem>
         </asp:ListBox>
         <br />
         <br />
@@ -117,7 +125,8 @@
         &nbsp;&nbsp;&nbsp;&nbsp;
         <asp:TextBox ID="TxtMotDePasse" runat="server" TextMode="Password"></asp:TextBox>
         <asp:RequiredFieldValidator ID="valMotDePasseVide" runat="server" ControlToValidate="TxtMotDePasse" ErrorMessage="Le champs ne doit pas être vide" ForeColor="Red">*</asp:RequiredFieldValidator>
-        <asp:RegularExpressionValidator ID="ValidMP" runat="server" ControlToValidate="TxtMotDePasse" ErrorMessage="Le format est incorrect" ForeColor="Red" ValidationExpression="(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{6,15})$">*</asp:RegularExpressionValidator>
+        <asp:RegularExpressionValidator ID="ValidMP" runat="server" ControlToValidate="TxtMotDePasse" ErrorMessage="Le format est incorrect" ForeColor="Red" ValidationExpression="(?!^[0-9]*$)(?!^[@$*$])(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{6,15})$">*</asp:RegularExpressionValidator>
+        <asp:CustomValidator ID="TaillePasswordValidator" runat="server" ErrorMessage="Le mot de passe doit avoir minimum 8 caractères" ForeColor="Red" OnServerValidate="TaillePasswordValidator_ServerValidate">*</asp:CustomValidator>
         <br />
         <br />
 &nbsp;&nbsp;&nbsp;
@@ -126,6 +135,12 @@
         <asp:TextBox ID="TxtConfirmMP" runat="server" TextMode="Password"></asp:TextBox>
         <asp:RequiredFieldValidator ID="valNom8" runat="server" ControlToValidate="TxtMotDePasse" ErrorMessage="Le champs ne doit pas être vide" ForeColor="Red">*</asp:RequiredFieldValidator>
         <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="TxtMotDePasse" ControlToValidate="TxtConfirmMP" ErrorMessage="Les mots de passe ne corresondent pas" ForeColor="Red">*</asp:CompareValidator>
+        <br />
+        <br />
+&nbsp;&nbsp;&nbsp;
+        <asp:Label ID="LblCommentaire" runat="server" Text="Commentaire:"></asp:Label>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:TextBox ID="TxtCommentaire" runat="server" Height="101px" TextMode="MultiLine" Width="265px"></asp:TextBox>
         <br />
         <br />
         <br />
