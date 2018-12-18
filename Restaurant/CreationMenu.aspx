@@ -7,7 +7,7 @@
 	<fieldset class="menu">
          <legend>Menu</legend> 
 		
-		 <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+		 <asp:TextBox ID="TextBox1" runat="server" ReadOnly="True" Visible="False"></asp:TextBox>
 		
 		<br />
 		<asp:Label ID="lblTitreMenu" runat="server" Text="Titre du menu" Width="150px"></asp:Label>

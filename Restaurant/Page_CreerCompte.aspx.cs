@@ -33,9 +33,6 @@ namespace Restaurant
             newCompte.nomUtilisateur = this.TxtNomUtilisateur.Text;
             newCompte.motPasse = this.TxtMotDePasse.Text;
             newCompte.commentaires = this.TxtCommentaire.Text;
-            newCompte.typecomptes = new typecomptes();
-            newCompte.typecomptes.idtype = 5;
-            newCompte.typecomptes.nomType = "Client";
             newCompte.Actif = 1;
 
 
