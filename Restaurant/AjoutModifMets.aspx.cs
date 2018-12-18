@@ -48,7 +48,8 @@ namespace Restaurant
 
 		protected void lnkDeconnecter_Click(object sender, EventArgs e)
 		{
-
+			this.Session.Abandon();
+			Response.Redirect("~/Authentification.aspx");
 		}
 
 		protected void lnkConsulterMenu_Click(object sender, EventArgs e)

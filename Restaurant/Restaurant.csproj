@@ -112,6 +112,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Accueil.aspx.cs">
+      <DependentUpon>Accueil.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Accueil.aspx.designer.cs">
+      <DependentUpon>Accueil.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AfficherCommande.aspx.cs">
       <DependentUpon>AfficherCommande.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -139,6 +146,13 @@
     </Compile>
     <Compile Include="AjoutResto.aspx.designer.cs">
       <DependentUpon>AjoutResto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Authentification.aspx.cs">
+      <DependentUpon>Authentification.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Authentification.aspx.designer.cs">
+      <DependentUpon>Authentification.aspx</DependentUpon>
     </Compile>
     <Compile Include="BDResto.cs" />
     <Compile Include="CommanderMets.aspx.cs">
@@ -176,6 +190,13 @@
     <Compile Include="ListeCommande.aspx.designer.cs">
       <DependentUpon>ListeCommande.aspx</DependentUpon>
     </Compile>
+    <Compile Include="PageMaitre.Master.cs">
+      <DependentUpon>PageMaitre.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageMaitre.Master.designer.cs">
+      <DependentUpon>PageMaitre.Master</DependentUpon>
+    </Compile>
     <Compile Include="Page_CreerCompte.aspx.cs">
       <DependentUpon>Page_CreerCompte.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -184,13 +205,6 @@
       <DependentUpon>Page_CreerCompte.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PageMaitre.Master.cs">
-      <DependentUpon>PageMaitre.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="PageMaitre.Master.designer.cs">
-      <DependentUpon>PageMaitre.Master</DependentUpon>
-    </Compile>
     <Compile Include="RConceptDataContext.cs" />
     <Compile Include="RestoConcept.designer.cs">
       <AutoGen>True</AutoGen>
@@ -201,6 +215,7 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include="960.css" />
+    <Content Include="Accueil.aspx" />
     <Content Include="AfficherCommande.aspx" />
     <Content Include="AjoutModifMenu.aspx" />
     <Content Include="AjoutModifMets.aspx" />
@@ -209,6 +224,7 @@
     <Content Include="App_Data\RestaurantConcept_log.ldf">
       <DependentUpon>RestaurantConcept.mdf</DependentUpon>
     </Content>
+    <Content Include="Authentification.aspx" />
     <Content Include="CommanderMets.aspx" />
     <Content Include="CreationMenu.aspx" />
     <Content Include="Default.aspx" />
@@ -219,7 +235,6 @@
     <Content Include="images\pageEnConstruction.png" />
     <Content Include="images\pizzaMerveilleuse.jpg" />
     <Content Include="ListeCommande.aspx" />
-    <Content Include="PageMaitre.Master" />
     <Content Include="Page_CreerCompte.aspx" />
     <Content Include="web.config" />
     <Content Include="RestoConcept.dbml">
@@ -227,6 +242,7 @@
       <LastGenOutput>RestoConcept.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="PageMaitre.Master" />
     <None Include="RestoConcept.dbml.layout">
       <DependentUpon>RestoConcept.dbml</DependentUpon>
     </None>

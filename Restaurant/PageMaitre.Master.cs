@@ -18,12 +18,11 @@ namespace Restaurant
 
 		{
             // On considère que le gérant est signé car on doit tester l'acceptation d'une commande
-            this.Session[Site1.SESSION_IDUTILISATEURCONNECTE] = 4;
+            //this.Session[Site1.SESSION_IDUTILISATEURCONNECTE] = 4;
             this.Session[Site1.SESSION_IDRESTO] = 1;
 			this.Session[Site1.SESSION_IDMENU] = 1;
-            //this.Session[Site1.SESSION_IDUTILISATEURCONNECTE] = 2;
+			//this.Session[Site1.SESSION_IDUTILISATEURCONNECTE] = 2;
 
-
-        }
+		}
 	}
 }

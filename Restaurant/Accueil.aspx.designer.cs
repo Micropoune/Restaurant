@@ -10,42 +10,33 @@
 namespace Restaurant {
     
     
-    public partial class Site1 {
+    public partial class Accueil {
         
         /// <summary>
-        /// Contrôle head.
+        /// Contrôle btnAuthentification.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
+        protected global::System.Web.UI.WebControls.Button btnAuthentification;
         
         /// <summary>
-        /// Contrôle form1.
+        /// Contrôle btnCreationCompte.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.Button btnCreationCompte;
         
         /// <summary>
-        /// Contrôle Titre.
+        /// Contrôle btnConsulterMenu.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder Titre;
-        
-        /// <summary>
-        /// Contrôle Contenu.
-        /// </summary>
-        /// <remarks>
-        /// Champ généré automatiquement.
-        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder Contenu;
+        protected global::System.Web.UI.WebControls.Button btnConsulterMenu;
     }
 }

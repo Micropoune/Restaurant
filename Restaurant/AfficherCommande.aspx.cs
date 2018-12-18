@@ -177,7 +177,7 @@ namespace Restaurant
         protected void BtnDeconnecter_Click(object sender, EventArgs e)
         {
             this.Session.Abandon();
-            this.Response.Redirect("~/Default.aspx");
+            this.Response.Redirect("~/Authentification.aspx");
         }
 
         protected void BtnListeCde_Click(object sender, EventArgs e)

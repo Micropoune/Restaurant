@@ -74,6 +74,18 @@ namespace Restaurant
             return compte.notpCmpt;
         }
 
+        /// <summary>
+        /// Retourne l'utilisateur dont le nom d'utilisateur est 
+        /// p_NomUtilisateur, ou null s'il n'y en a aucun.
+        /// </summary>
+        /// <param name="p_NomUtilisateur">Nom d'utilisateur</param>
+        /// <returns>Un utilisateur ou null</returns>
+        public comptes GetUtilisateur(string p_NomUtilisateur)
+        {
+            return m_BD.comptes.SingleOrDefault(
+                u =>
+                    (u.nomUtilisateur.Equals(p_NomUtilisateur)));
+        }
 
         #endregion
 

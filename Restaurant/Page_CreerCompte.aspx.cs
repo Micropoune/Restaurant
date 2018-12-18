@@ -10,7 +10,7 @@ namespace Restaurant
 {
     public partial class Page_CreerCompte : System.Web.UI.Page
     {
-        
+
         int numCompte = 1;
         int idAdresse = 1;
 
@@ -21,13 +21,13 @@ namespace Restaurant
 
         public void creerCompte()
         {
-           
+
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-          
+
         }
-    
+
 
         protected void BtnCreerCompte_Click(object sender, EventArgs e)
         {
@@ -36,14 +36,14 @@ namespace Restaurant
                 comptes newCompte = new comptes();
                 adresses newAdresse = new adresses();
 
-                foreach(comptes user in BDResto.Instance.GetAllComptes())
+                foreach (comptes user in BDResto.Instance.GetAllComptes())
                 {
-                    if(user.noAdrs == this.numCompte)
+                    if (user.noAdrs == this.numCompte)
                     {
                         this.numCompte++;
                     }
                 }
-                
+
                 newCompte.noCompte = numCompte;
                 newCompte.notpCmpt = 5;
                 newCompte.prenom = this.TxtPrenom.Text;
@@ -53,7 +53,7 @@ namespace Restaurant
                 newCompte.motPasse = this.TxtMotDePasse.Text;
                 newCompte.Courriel = this.TxtCourriel.Text;
                 newCompte.Actif = 1;
-               
+
 
                 foreach (comptes user in BDResto.Instance.GetAllComptes())
                 {
@@ -73,17 +73,17 @@ namespace Restaurant
 
                 BDResto.Instance.ajouterComptes(newCompte);
                 BDResto.Instance.Sauvegarder();
-               
-                
+
+
                 Response.Redirect("Default.aspx");
             }
-           
+
 
         }
 
         protected void TxtTelephone_TextChanged(object sender, EventArgs e)
         {
-          
+
         }
     }
 }

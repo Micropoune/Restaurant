@@ -22,7 +22,7 @@
     <div class="auto-style1" id="LblConfirmMotDePasser">
         <asp:HyperLink ID="HLAccueil" runat="server" ForeColor="Blue" Class ="HLink" NavigateUrl="~/Default.aspx">Accueil</asp:HyperLink>
         &nbsp;&nbsp;
-        <asp:HyperLink ID="HLConnecter" runat="server" ForeColor="Blue" Class ="HLink">Se connecter</asp:HyperLink>
+        <asp:HyperLink ID="HLConnecter" runat="server" ForeColor="Blue" Class ="HLink" style="height: 27px">Se connecter</asp:HyperLink>
         &nbsp;
         <asp:HyperLink ID="HLMenu" runat="server" ForeColor="Blue" Class ="HLink">Consulter le menu </asp:HyperLink>
         <asp:Label ID="LblCreerCompte" runat="server" Font-Bold="True" Font-Size="X-Large" Text="Se créer un compte"></asp:Label>
@@ -115,7 +115,7 @@
 &nbsp;&nbsp;&nbsp;
          <asp:Label ID="LblMotDePasse" runat="server" Text="Mot de passe: "></asp:Label>
         &nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:TextBox ID="TxtMotDePasse" runat="server"></asp:TextBox>
+        <asp:TextBox ID="TxtMotDePasse" runat="server" TextMode="Password"></asp:TextBox>
         <asp:RequiredFieldValidator ID="valMotDePasseVide" runat="server" ControlToValidate="TxtMotDePasse" ErrorMessage="Le champs ne doit pas être vide" ForeColor="Red">*</asp:RequiredFieldValidator>
         <asp:RegularExpressionValidator ID="ValidMP" runat="server" ControlToValidate="TxtMotDePasse" ErrorMessage="Le format est incorrect" ForeColor="Red" ValidationExpression="(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{6,15})$">*</asp:RegularExpressionValidator>
         <br />
@@ -123,7 +123,7 @@
 &nbsp;&nbsp;&nbsp;
          <asp:Label ID="LblConfirmMotDePasse" runat="server" Text="Confirmer votre mot de passe: " Font-Overline="False" Font-Size="Medium" Width="147px"></asp:Label>
         &nbsp;&nbsp;&nbsp;
-        <asp:TextBox ID="TxtConfirmMP" runat="server"></asp:TextBox>
+        <asp:TextBox ID="TxtConfirmMP" runat="server" TextMode="Password"></asp:TextBox>
         <asp:RequiredFieldValidator ID="valNom8" runat="server" ControlToValidate="TxtMotDePasse" ErrorMessage="Le champs ne doit pas être vide" ForeColor="Red">*</asp:RequiredFieldValidator>
         <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="TxtMotDePasse" ControlToValidate="TxtConfirmMP" ErrorMessage="Les mots de passe ne corresondent pas" ForeColor="Red">*</asp:CompareValidator>
         <br />

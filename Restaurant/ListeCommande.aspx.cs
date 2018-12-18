@@ -18,15 +18,6 @@ namespace Restaurant
             txtMessage.Text = "";
             
             
-            // Si on est avec état différent de Autre, on doit sélectionner que
-            // les commandes avec l'état choisi
-            if (ddlEtatCommande.SelectedValue == "")
-            {
-                
-                //ddlEtatCommande.SelectedIndex = 7;
-                //ddlEtatCommande.SelectedValue = "7";
-            }
-
             // Chargement de la dropdownlist avec les valeurs possibles
             // selon la personne connectée
             if (!IsPostBack)
@@ -51,10 +42,6 @@ namespace Restaurant
             }
             else
             {
-
-
-                
-
                 // Chargement de la gridview
                 DataTable dt = new DataTable("gvCommande");
                 DataColumn dcNum = new DataColumn("N° Commande", typeof(int));
@@ -152,6 +139,7 @@ namespace Restaurant
             Page_Load(sender, e);
         }
 
+        // Méthode pour récupérer les commandes qui permettront de charger la table
         protected List<commandes> chargementTable(String p_EtatCde)
         {
             
@@ -165,12 +153,6 @@ namespace Restaurant
                                               where Convert.ToString(element.idetat) == p_EtatCde
                                               select element).ToList();
             }
-            //else
-            //{
-            //    tableauRetour = (from element in ensembleCommandes
-            //                                  select element).ToList();
-            //}  
-
             
 
             return tableauRetour;
@@ -180,25 +162,15 @@ namespace Restaurant
         }
 
        
-        protected void btnAfficher_Click(object sender, EventArgs e)
-        {
-            txtMessage.Text = "";
-            if (this.Session[Site1.SESSION_IDCOMMANDE] != null)
-            {
-                Response.Redirect("~/AfficherCommande.aspx");
-                
-            }
-            else
-            {
-                txtMessage.Text = "Vous devez sélectionner une ligne.";
-            }
-        }
+        
 
+        // Si on sélectionne une ligne dans le gridview, on sauvegarde l'ID commande correspondant
         protected void gvCommandes_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.Session[Site1.SESSION_IDCOMMANDE] = Convert.ToInt32(this.gvCommandes.SelectedRow.Cells[1].Text);
         }
 
+        // Méthode qui permet de clearer le gridview
         protected void clearGridView(GridView p_GridView)
         {
             p_GridView.DataSource = null;
@@ -209,22 +181,42 @@ namespace Restaurant
             }
         }
 
+        // Clic sur le bouton Accueil
         protected void BtnAccueil_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/Default.aspx");
         }
 
+        // Clic sur le bouton Déconnecter
         protected void BtnDeconnecter_Click(object sender, EventArgs e)
         {
             this.Session.Abandon();
-            this.Response.Redirect("~/Default.aspx");
+            this.Response.Redirect("~/Authentification.aspx");
         }
 
+        // Clic sur le bouton Annuler
         protected void btnAnnuler_Click(object sender, EventArgs e)
         {
             this.Response.Redirect("~/Default.aspx");
         }
 
+        // Clic sur le bouton Afficher
+        protected void btnAfficher_Click(object sender, EventArgs e)
+        {
+            txtMessage.Text = "";
+            if (this.Session[Site1.SESSION_IDCOMMANDE] != null)
+            {
+                Response.Redirect("~/AfficherCommande.aspx");
+
+            }
+            else
+            {
+                txtMessage.Text = "Vous devez sélectionner une ligne.";
+            }
+        }
+
+        // Récupération des états commande à afficher dans la dropdownlist
+        // suivant l'utilisateur connecté
         protected List<etatcommandes> chargerDDL()
         {
             int cpt = 0;
@@ -233,8 +225,8 @@ namespace Restaurant
             etatcommandes etat;
 
             var typeCompte = BDResto.Instance.GetTypeCompteUtil(Convert.ToInt32(this.Session[Site1.SESSION_IDUTILISATEURCONNECTE]));
-            // Le gérant a accès à tous les états
-            if (typeCompte == 2)
+            // Le gérant et l'administrateur ont accès à tous les états
+            if (typeCompte == 2 || typeCompte == 1)
             {
                 var listeEtat = BDResto.Instance.GetAllEtatsCde();
                 foreach (etatcommandes item in listeEtat)
@@ -262,6 +254,7 @@ namespace Restaurant
                         etat = BDResto.Instance.GetEtatCde(3);
                         element.Add(etat);
                     }
+                    
                 }
 
             }

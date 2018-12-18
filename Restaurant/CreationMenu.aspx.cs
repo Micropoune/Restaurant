@@ -27,6 +27,7 @@ namespace Restaurant
 
 		protected void btnAnnuler_Click(object sender, EventArgs e)
 		{
+			this.Session.Abandon();
 			Response.Redirect("~/Default.aspx");
 		}
 
@@ -43,7 +44,8 @@ namespace Restaurant
 
 		protected void lnkDeconnecter_Click(object sender, EventArgs e)
 		{
-			Response.Redirect("~/EnConstruction.aspx");
+			this.Session.Abandon();
+			Response.Redirect("~/Authentification.aspx");
 		}
 
 		protected void lnkGestionMenu_Click(object sender, EventArgs e)
