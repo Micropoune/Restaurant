@@ -9,13 +9,15 @@ namespace Restaurant
 {
     public partial class WebForm1 : System.Web.UI.Page
     {
-        public static int SESSION_IDRESTO;
-        public static int SESSION_IDCOMMANDE;
-        public static int SESSION_IDMENU;
-        
+        items_commande panier = new items_commande();
+        commandes comm = new commandes();
+        List<produits> lst_produits = new List<produits>();
+
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            commandes comm = new commandes();
+            
 
             if (this.Session[Site1.SESSION_IDUTILISATEURCONNECTE] != null)
 
@@ -25,12 +27,18 @@ namespace Restaurant
                     int idMenu = (int)this.Session[Site1.SESSION_IDMENU];
                     int idResto = (int)this.Session[Site1.SESSION_IDRESTO];
                     int idUsager = (int)this.Session[Site1.SESSION_IDUTILISATEURCONNECTE];
+                    int idCommande = (int)this.Session[Site1.SESSION_IDCOMMANDE];
 
+                    comptes usager = BDResto.Instance.GetCompte(idUsager);                  
+                    restaurants resto = BDResto.Instance.GetRestaurant(idResto);
                     menus menu = BDResto.Instance.GetMenu(idMenu);
 
-                    //int idProduit = BDResto.Instance.GetProduit((int)lstViewMenu.SelectedValue());
+                    produits idProduit = BDResto.Instance.GetProduit();
 
-                    
+
+                    clearGridView(gv_panier);
+
+
                 }
                 
                  
@@ -42,22 +50,57 @@ namespace Restaurant
             }
         }
 
-		protected void btn_ajouter_Click(object sender, EventArgs e)
-		{
-            produits temp = (produits)this.lstViewMenu.SelectedValue;
-            this.lstBox_Panier.Items.Add(temp.nomProd);
-            this.lstBox_Panier.Items.Add(temp.prixProd.ToString());
+        protected void btn_ajouter_Click(object sender, EventArgs e)
+        {
 
-            //this.lstBox_Panier.Show();
 
-           
+
+
         }
-
         protected void Button2_Click(object sender, EventArgs e)
         {
-            this.Session[SESSION_IDCOMMANDE] = new commandes();
+            //comm.adresses = this.Session[Site1.SESSION_IDUTILISATEURCONNECTE];
+
+            items_commande panier = new items_commande();
 
             this.Response.Redirect("~/AfficherCommande.aspx");
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            this.Response.Redirect("~/Default.aspx");
+        }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            // ajouter dans la listview item_commande
+
+            produits selectedItems = gv_Menu.SelectedValue;
+
+        }
+
+        protected void GridView2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+        protected void clearGridView(GridView p_GridView)
+        {
+            p_GridView.DataSource = null;
+            p_GridView.DataBind();
+            for (int i = 1; p_GridView.Columns.Count > i;)
+            {
+                p_GridView.Columns.RemoveAt(i);
+            }
+        }
+        protected List<produits> chargementTable(String p_idProduit)
+        {
+            List<produits> tableauRetour = new List<produits>();
+            if (p_idProduit != "")
+            {
+                tableauRetour = BDResto.Instance.GetProduit(Convert.ToInt32(p_idProduit));
+            }
+
+            return tableauRetour;
         }
     }
 }
