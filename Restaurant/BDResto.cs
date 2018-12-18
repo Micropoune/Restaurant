@@ -88,14 +88,7 @@ namespace Restaurant
 			return this.m_BD.menus.SingleOrDefault(
 				Menu => (Menu.idMenu == p_id));
 		}
-		public IQueryable<menus> GetAllMenus()
-		{
-			return m_BD.menus;
-		}
-		public IQueryable<menu_produits> GetAllMenuProduit()
-		{
-			return m_BD.menu_produits;
-		}
+
 		#endregion
 
 		#region Mets
@@ -277,7 +270,16 @@ namespace Restaurant
             return m_BD.etatcommandes;
         }
 
-        
+        /// <summary>
+        /// Retourne l'état de commande dont l'ID est passé
+        /// en paramètre
+        ///   
+        /// </summary>
+        public etatcommandes GetEtatCde(int p_EtatCde)
+        {
+            return m_BD.etatcommandes.SingleOrDefault(
+                u => (u.idEtat == p_EtatCde));
+        }
         #endregion
 
     }

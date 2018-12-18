@@ -24,4 +24,42 @@ h1 {
     text-align:right;
 }
 
+.Restaurant, .idInfoCde
+{
+    padding-top : 30px;
+    padding-bottom : 30px;
+}
 
+.lien
+{
+    padding-top : 30px;
+    float : right;
+}
+
+.BtnAccueil, .BtnDeconnecter, .BtnListeCde {
+    padding: 15px;
+
+}
+
+.Commande
+{
+    padding-top : 80px;
+}
+
+.RechCommande
+{
+    padding-top : 15px;
+}
+
+.txtNomClient
+{
+    padding-left : 25px;
+}
+
+.txtAdrClient {
+    padding-left: 120px;
+}
+
+.infoClt{
+    padding-top : 5px;
+}

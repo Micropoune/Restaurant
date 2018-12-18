@@ -11,7 +11,7 @@
 		<asp:Label ID="lblTitreMenu" runat="server" Text="Titre du menu" Width="150px"></asp:Label>
 		
 		
-		 <asp:DropDownList ID="ddlTitre" runat="server" DataSourceID="SqlDataSource2" DataTextField="titreMenu" DataValueField="titreMenu">
+		 <asp:DropDownList ID="ddlTitre" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource2" DataTextField="titreMenu" DataValueField="titreMenu">
 		 </asp:DropDownList>
 		 <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [titreMenu] FROM [menus]"></asp:SqlDataSource>
 		

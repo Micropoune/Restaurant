@@ -13,6 +13,15 @@ namespace Restaurant {
     public partial class AjoutModifMenu {
         
         /// <summary>
+        /// ValidationAjoutMenu control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary ValidationAjoutMenu;
+        
+        /// <summary>
         /// lblTitreMenu control.
         /// </summary>
         /// <remarks>
@@ -29,6 +38,15 @@ namespace Restaurant {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTitreMenu;
+        
+        /// <summary>
+        /// ValidateurTitre control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator ValidateurTitre;
         
         /// <summary>
         /// status control.
@@ -65,6 +83,15 @@ namespace Restaurant {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtCommentaires;
+        
+        /// <summary>
+        /// ValidateurCommentaires control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator ValidateurCommentaires;
         
         /// <summary>
         /// lblIdResto control.

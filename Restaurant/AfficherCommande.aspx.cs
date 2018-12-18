@@ -12,6 +12,7 @@ namespace Restaurant
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            
             // On récupère les informations de la commande
             txtNumCde.Text = Convert.ToString(this.Session[Site1.SESSION_IDCOMMANDE]);
             var commande = BDResto.Instance.GetCommande(Convert.ToInt32(this.Session[Site1.SESSION_IDCOMMANDE]));
@@ -19,8 +20,11 @@ namespace Restaurant
             // On récupère l'état de la commande   
             txtEtatCde.Text = Convert.ToString(commande.idetat);
 
-            var info = recupererInfoCde(commande.noClient, commande.noAdrs);
-            txtInfoClient.Text = info;
+            String[] info = recupererInfoCde(commande.noClient, commande.noAdrs);
+            //lblInfoClt.Text = info;
+            //txtInfoClient.Text = info;
+            txtNomClient.Text = info[0];
+            txtAdrClient.Text = info[1];
 
             // Procédure qui supprime le gridview
             clearGridView(gvDetailCde);
@@ -81,6 +85,22 @@ namespace Restaurant
                 // Initialise la valeur du champ HeaderText.
                 bfield.HeaderText = col.ColumnName;
 
+                if (col.ColumnName == "Mets")
+                {
+                    bfield.ItemStyle.HorizontalAlign = HorizontalAlign.Left;
+                }
+                else
+                {
+                    if (col.ColumnName == "QTE")
+                    {
+                        bfield.ItemStyle.HorizontalAlign = HorizontalAlign.Center;
+                    }
+                    else
+                    {
+                        bfield.ItemStyle.HorizontalAlign = HorizontalAlign.Right;
+                    }
+                }
+                
                 // Ajoute le champ lié nouvellement créé au GridView.
                 gvDetailCde.Columns.Add(bfield);
 
@@ -107,30 +127,45 @@ namespace Restaurant
 
             // On définit le texte des boutons 
             // On récupère le type de compte de l'utilisateur connecté 
+            btn1.Visible = true;
+            btn2.Visible = true;
             txtTypeCpte.Text = Convert.ToString(BDResto.Instance.GetTypeCompteUtil(Convert.ToInt32(this.Session[Site1.SESSION_IDUTILISATEURCONNECTE])));
             if (txtTypeCpte.Text == "2")
-            { 
-                // Gérant
-                btn1.Text = "Accepter";
-                btn2.Text = "Refuser";
+            {
+                
+                if (txtEtatCde.Text == "7")
+                {
+                    // Gérant
+                    btn1.Text = "Accepter";
+                    btn2.Text = "Refuser";
+                }
+                else
+                {
+                    btn1.Visible = false;
+                    btn2.Visible = false;
+                }
             }
         }
 
 
 
 
-        private String recupererInfoCde(int p_NumClt, int p_NumAdr)
+        private String[] recupererInfoCde(int p_NumClt, int p_NumAdr)
         {
+            String[] infoClient = new string[2];
+
             // On récupère le client de la commande
             var client = BDResto.Instance.GetCompte(p_NumClt);
 
             // On récupère l'adresse
             var adresse = BDResto.Instance.GetAdresse(p_NumAdr);
 
-            var info = client.nom + " " + client.prenom;
-            info = info + "\r\n" + adresse.noCvq + " " + adresse.Rue + " " + adresse.ville + " " + adresse.codePostal;
-
-            return info;
+            infoClient[0] = client.nom + " " + client.prenom; 
+            infoClient[1] = adresse.noCvq + " " + adresse.Rue + " " + adresse.ville + " " + adresse.codePostal;
+            //var info = "Client : " + client.nom + " " + client.prenom;
+            //info = info + "\r\n" + adresse.noCvq + " " + adresse.Rue + " " + adresse.ville + " " + adresse.codePostal;
+            return infoClient;
+            //return info;
             throw new NotImplementedException();
         }
 

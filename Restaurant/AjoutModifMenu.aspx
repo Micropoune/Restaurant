@@ -3,8 +3,12 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="Contenu" runat="server">
 	<fieldset>
 	<legend>Menu</legend>
+		<br />
+		<asp:ValidationSummary ID="ValidationAjoutMenu" runat="server" ForeColor="Red" ValidationGroup="ValidationajoutMenu"/>
+		<br />
 	<asp:Label ID="lblTitreMenu" runat="server" Text="Titre menu :" Width="140px"></asp:Label>
 	<asp:TextBox ID="txtTitreMenu" runat="server" Width="200px"></asp:TextBox>
+		<asp:RequiredFieldValidator ID="ValidateurTitre" ValidationGroup="ValidationajoutMenu" runat="server" ErrorMessage="Le champs ne doit pas être vide" ForeColor="Red" ControlToValidate="txtTitreMenu">*</asp:RequiredFieldValidator>
 	<br />
 	<br />
 	<asp:Label ID="status" runat="server" Text="Status :" Width="140px"></asp:Label>
@@ -16,6 +20,7 @@
 	<br />
 	<asp:Label ID="lblCommentaires" runat="server" Text="Commentaires :" Width="140px"></asp:Label>
 	<asp:TextBox ID="txtCommentaires" runat="server" Height="56px" Width="200px"></asp:TextBox>
+		<asp:RequiredFieldValidator ID="ValidateurCommentaires" ValidationGroup="ValidationajoutMenu" runat="server" ErrorMessage="Le champs ne doit pas être vide" ForeColor="Red" ControlToValidate="txtCommentaires">*</asp:RequiredFieldValidator>
 	<br />
 	<br />
 	<asp:Label ID="lblIdResto" runat="server" Text="Restaurant:" Width="140px"></asp:Label>

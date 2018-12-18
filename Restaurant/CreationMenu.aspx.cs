@@ -10,17 +10,19 @@ namespace Restaurant
 {
 	public partial class CreationMenu : System.Web.UI.Page
 	{
-	
+
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			if (this.Session[Site1.SESSION_IDMENU] != null)
+			//if (this.Session[Site1.SESSION_IDMENU] != null)
+			//{
+			if (!IsPostBack)
 			{
-				int idMenu = (int)this.Session[Site1.SESSION_IDMENU];
+				var idMenu = Convert.ToInt32(this.Session[Site1.SESSION_IDMENU]);
 				menus menuAAfficher = BDResto.Instance.GetMenu(idMenu);
 				ddlTitre.SelectedValue = menuAAfficher.titreMenu;
-				//GridView1.
-		
 			}
+
+			//}
 		}
 
 		protected void btnAnnuler_Click(object sender, EventArgs e)
@@ -58,6 +60,10 @@ namespace Restaurant
 		{
 			Response.Redirect("~/EnConstruction.aspx");
 		}
+		protected void ddlTitre_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			menus menuAAfficher = BDResto.Instance.GetMenu(ddlTitre.SelectedIndex);
 
+		}
 	}
 }
