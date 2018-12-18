@@ -14,6 +14,10 @@ namespace Restaurant
         List<menu_produits> tableauSel = new List<menu_produits>();
         protected void Page_Load(object sender, EventArgs e)
         {
+			if (ddlMenu.SelectedValue.ToString() != "")
+			{
+				txtIdMenu.Text = ddlMenu.SelectedValue.ToString();
+			}
 			//this.Session[Site1.SESSION_IDMENU] = ddlMenu.SelectedValue.ToString();
 			if (!IsPostBack)
             {
@@ -162,7 +166,7 @@ namespace Restaurant
 
         protected void ddlMenu_SelectedIndexChanged(object sender, EventArgs e)
         {
-			this.Session[Site1.SESSION_IDMENU] = ddlMenu.SelectedValue.ToString();
+		
 			Page_Load(sender, e);
         }
 
@@ -191,12 +195,15 @@ namespace Restaurant
 
 		protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
 		{
+			txtIdProduit.Text = this.GridView1.SelectedRow.Cells[1].Text;
 			this.Session[Site1.SESSION_IDPRODUIT] = this.GridView1.SelectedRow.Cells[1].Text;
 		}
 
 		protected void btnAjouterMetsMenu_Click(object sender, EventArgs e)
 		{
-			BDResto.Instance.ajouterMetMenu(Convert.ToInt32(this.Session[Site1.SESSION_IDMENU]),Convert.ToInt32(this.Session[Site1.SESSION_IDPRODUIT]));
+			BDResto.Instance.ajouterMetMenu(Convert.ToInt32(txtIdMenu.Text),Convert.ToInt32(txtIdProduit.Text));
+			BDResto.Instance.Sauvegarder();
+			Page_Load(sender, e);
 		}
 	}
 }

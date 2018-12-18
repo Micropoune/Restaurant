@@ -7,7 +7,8 @@
 	<fieldset class="menu">
          <legend>Menu</legend> 
 		
-		 <asp:TextBox ID="TextBox1" runat="server" ReadOnly="True" Visible="False"></asp:TextBox>
+		 <asp:TextBox ID="txtIdMenu" runat="server" ReadOnly="True" Visible="False"></asp:TextBox>
+		 <asp:TextBox ID="txtIdProduit" runat="server" ReadOnly="True" Visible="False"></asp:TextBox>
 		
 		<br />
 		<asp:Label ID="lblTitreMenu" runat="server" Text="Titre du menu" Width="150px"></asp:Label>
@@ -41,7 +42,7 @@
 		 <br />
 		 <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" DataKeyNames="idProduit">
 			 <Columns>
-				 <asp:CommandField ButtonType="Button" SelectImageUrl="~/images/fleche.png" ShowSelectButton="True" />
+				 <asp:CommandField ButtonType="Image" SelectImageUrl="~/images/fleche.png" ShowSelectButton="True" />
 				 <asp:BoundField DataField="idProduit" HeaderText="idProduit" InsertVisible="False" ReadOnly="True" SortExpression="idProduit" />
 				 <asp:BoundField DataField="nomProd" HeaderText="nomProd" SortExpression="nomProd" />
 				 <asp:BoundField DataField="descProd" HeaderText="descProd" SortExpression="descProd" />

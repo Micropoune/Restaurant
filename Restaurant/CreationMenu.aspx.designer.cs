@@ -40,13 +40,22 @@ namespace Restaurant {
         protected global::System.Web.UI.WebControls.LinkButton lnkGestionMenu;
         
         /// <summary>
-        /// TextBox1 control.
+        /// txtIdMenu control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox txtIdMenu;
+        
+        /// <summary>
+        /// txtIdProduit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtIdProduit;
         
         /// <summary>
         /// lblTitreMenu control.
