@@ -11,7 +11,7 @@
 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RestaurantConceptConnectionString %>" SelectCommand="SELECT [nomProd], [descProd], [prixProd], [imgProd] FROM [produits]"></asp:SqlDataSource>
 
 
-<asp:Button ID="Button3" runat="server" Text="Ajouter au panier" />
+<asp:Button ID="Button3" runat="server" Text="Ajouter au panier" OnClick="Button3_Click" />
     <br />
     <br />
 <asp:Label ID="Label1" runat="server" Text="Panier"></asp:Label>

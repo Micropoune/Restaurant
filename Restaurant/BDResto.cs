@@ -37,62 +37,62 @@ namespace Restaurant
 
 		public void ajouterComptes(comptes p_Comptes)
 		{
-			Debug.Assert((p_Comptes!= null), "p_Comptes doit être différent de null");
+			Debug.Assert((p_Comptes != null), "p_Comptes doit être différent de null");
 			this.m_BD.comptes.InsertOnSubmit(p_Comptes);
 		}
 
-        /// <summary>
-        /// Retourne la liste de tous les comptes. 
-        /// </summary>
-        public IQueryable<comptes> GetAllComptes()
-        {
-            return m_BD.comptes;
-        }
-
-        /// <summary>
-        /// Retourne le compte dont l'ID est 
-        /// p_IDCompte, ou null s'il n'y en a aucun.
-        /// </summary>
-        /// <param name="p_Idcompte">Identifiant à rechercher</param>
-        /// <returns>Un compte ou null</returns>
-        public comptes GetCompte(int p_IdCompte)
-        {
-            return m_BD.comptes.SingleOrDefault(
-                u => (u.noCompte == p_IdCompte));
-        }
-
-        /// <summary>
-        /// Retourne le type de compte de l'utilisateur dont l'ID
-        /// est p_IDCompte, ou null s'il n'y en a aucun.
-        /// </summary>
-        /// <param name="p_Idcompte">Identifiant à rechercher</param>
-        /// <returns>Un type de compte ou null</returns>
-        public int GetTypeCompteUtil(int p_IdCompte)
-        {
-            var compte = m_BD.comptes.SingleOrDefault(
-                u => (u.noCompte == p_IdCompte));
-            return compte.notpCmpt;
-        }
-
-        /// <summary>
-        /// Retourne l'utilisateur dont le nom d'utilisateur est 
-        /// p_NomUtilisateur, ou null s'il n'y en a aucun.
-        /// </summary>
-        /// <param name="p_NomUtilisateur">Nom d'utilisateur</param>
-        /// <returns>Un utilisateur ou null</returns>
-        public comptes GetUtilisateur(string p_NomUtilisateur)
-        {
-            return m_BD.comptes.SingleOrDefault(
-                u =>
-                    (u.nomUtilisateur.Equals(p_NomUtilisateur)));
-        }
-
-        #endregion
-
-        #region Menu
-        public void ajouterMenu(menus p_Menus)
+		/// <summary>
+		/// Retourne la liste de tous les comptes. 
+		/// </summary>
+		public IQueryable<comptes> GetAllComptes()
 		{
-			Debug.Assert((p_Menus!=null), "p_Menu doit être différent de null");
+			return m_BD.comptes;
+		}
+
+		/// <summary>
+		/// Retourne le compte dont l'ID est 
+		/// p_IDCompte, ou null s'il n'y en a aucun.
+		/// </summary>
+		/// <param name="p_Idcompte">Identifiant à rechercher</param>
+		/// <returns>Un compte ou null</returns>
+		public comptes GetCompte(int p_IdCompte)
+		{
+			return m_BD.comptes.SingleOrDefault(
+				u => (u.noCompte == p_IdCompte));
+		}
+
+		/// <summary>
+		/// Retourne le type de compte de l'utilisateur dont l'ID
+		/// est p_IDCompte, ou null s'il n'y en a aucun.
+		/// </summary>
+		/// <param name="p_Idcompte">Identifiant à rechercher</param>
+		/// <returns>Un type de compte ou null</returns>
+		public int GetTypeCompteUtil(int p_IdCompte)
+		{
+			var compte = m_BD.comptes.SingleOrDefault(
+				u => (u.noCompte == p_IdCompte));
+			return compte.notpCmpt;
+		}
+
+		/// <summary>
+		/// Retourne l'utilisateur dont le nom d'utilisateur est 
+		/// p_NomUtilisateur, ou null s'il n'y en a aucun.
+		/// </summary>
+		/// <param name="p_NomUtilisateur">Nom d'utilisateur</param>
+		/// <returns>Un utilisateur ou null</returns>
+		public comptes GetUtilisateur(string p_NomUtilisateur)
+		{
+			return m_BD.comptes.SingleOrDefault(
+				u =>
+					(u.nomUtilisateur.Equals(p_NomUtilisateur)));
+		}
+
+		#endregion
+
+		#region Menu
+		public void ajouterMenu(menus p_Menus)
+		{
+			Debug.Assert((p_Menus != null), "p_Menu doit être différent de null");
 			this.m_BD.menus.InsertOnSubmit(p_Menus);
 		}
 		public menus GetMenu(int p_id)
@@ -108,7 +108,39 @@ namespace Restaurant
 		{
 			Debug.Assert((p_Mets != null), "p_Mets doit être différent de null");
 			this.m_BD.produits.InsertOnSubmit(p_Mets);
+
 		}
+
+		#endregion
+		#region Menu Produit
+		public void ajouterMetMenu(menu_produits item, menus p_menu, produits p_produits)
+		{
+			//menu_produits item = new menu_produits();
+			item.idProduit = p_produits.idProduit;
+			item.idMenu = p_menu.idMenu;
+			this.m_BD.menu_produits.InsertOnSubmit(item);
+		
+		}
+		public menu_produits getMenuProduit(int p_Id)
+		{
+			return this.m_BD.menu_produits.SingleOrDefault(menu
+				=> menu.idItem == p_Id);
+
+		}
+		public IQueryable<menu_produits> GetAllMenuProduit()
+		{
+			return m_BD.menu_produits;
+		}
+
+		public List<menu_produits> GetProduitsMenu(int p_idMenu)
+		{
+			var listeItem = ((from element in m_BD.menu_produits
+							  where element.idMenu == p_idMenu
+							  select element).ToList());
+
+			return listeItem;
+		}
+
 		#endregion
 
 		#region Categorie

@@ -1,6 +1,7 @@
 ﻿using Microsoft.CSharp.RuntimeBinder;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -8,64 +9,183 @@ using System.Web.UI.WebControls;
 
 namespace Restaurant
 {
-	public partial class CreationMenu : System.Web.UI.Page
-	{
-
-		protected void Page_Load(object sender, EventArgs e)
-		{
-			//if (this.Session[Site1.SESSION_IDMENU] != null)
-			//{
-			if (!IsPostBack)
-			{
-				var idMenu = Convert.ToInt32(this.Session[Site1.SESSION_IDMENU]);
-				menus menuAAfficher = BDResto.Instance.GetMenu(idMenu);
-				ddlTitre.SelectedValue = menuAAfficher.titreMenu;
-			}
-
-			//}
-		}
-
-		protected void btnAnnuler_Click(object sender, EventArgs e)
-		{
-			this.Session.Abandon();
-			Response.Redirect("~/Default.aspx");
-		}
+    public partial class CreationMenu : System.Web.UI.Page
+    {
+        List<menu_produits> tableauSel = new List<menu_produits>();
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
 
 
-		protected void btnAjouterMets_Click(object sender, EventArgs e)
-		{
-			Response.Redirect("~/AjoutModifMets.aspx");
-		}
+                if (this.Session[Site1.SESSION_IDMENU] == "")
+                {
+                    this.Session[Site1.SESSION_IDMENU] = 0;
+                }
+                var idMenu = Convert.ToInt32(this.Session[Site1.SESSION_IDMENU]);
+                menus menuAAfficher = BDResto.Instance.GetMenu(idMenu);
+            }
 
-		protected void lnkAccueil_Click(object sender, EventArgs e)
-		{
-			Response.Redirect("~/Default.aspx");
-		}
+            // On charge la table contenant les produits du menu désiré
+            if (ddlMenu.SelectedValue.ToString() == "")
+            {
+                tableauSel = chargementTable(Convert.ToString(this.Session[Site1.SESSION_IDMENU]));
+            }
+            else
+            {
+                tableauSel = chargementTable(ddlMenu.SelectedValue.ToString());
+            }
 
-		protected void lnkDeconnecter_Click(object sender, EventArgs e)
-		{
-			this.Session.Abandon();
-			Response.Redirect("~/Authentification.aspx");
-		}
+            // Procédure qui supprime le gridview
+            clearGridView(gvMenu);
 
-		protected void lnkGestionMenu_Click(object sender, EventArgs e)
-		{
-			Response.Redirect("~/EnConstruction.aspx");
-		}
+            if (tableauSel == null)
+            {
+                txtMessage.Text = "Aucun élément dans ce menu.";
+            }
+            else
+            {
+                // Chargement de la gridview
+                DataTable dt = new DataTable("gvMenu");
+                DataColumn dcPdt = new DataColumn("Produit", typeof(String));
+                DataColumn dcDesc = new DataColumn("Description", typeof(String));
+                DataColumn dcPrix = new DataColumn("Prix", typeof(int));
+                DataColumn dcImage = new DataColumn("Image", typeof(Image));
 
-		protected void btnModifierMets_Click(object sender, EventArgs e)
-		{
-			Response.Redirect("~/EnConstruction.aspx");
-		}
 
-		protected void btnDesactiverMets_Click(object sender, EventArgs e)
-		{
-			Response.Redirect("~/EnConstruction.aspx");
-		}
-		protected void ddlTitre_SelectedIndexChanged(object sender, EventArgs e)
-		{
-			menus menuAAfficher = BDResto.Instance.GetMenu(ddlTitre.SelectedIndex);
+                dt.Columns.Add(dcPdt);
+                dt.Columns.Add(dcDesc);
+                dt.Columns.Add(dcPrix);
+                dt.Columns.Add(dcImage);
 
-		}
-	}
+                foreach (menu_produits item in tableauSel)
+                {
+
+                    DataRow dr = dt.NewRow();
+
+                    // On récupère les informations du produit
+                    var pdt = BDResto.Instance.GetProduit(item.idProduit);
+                    Image img = new Image();
+                    img.ImageUrl = ResolveUrl(pdt.imgProd);
+                    dr["Produit"] = pdt.nomProd;
+                    dr["Description"] = pdt.descProd;
+                    dr["Prix"] = pdt.prixProd;
+                    dr["Image"] = img;
+
+                    dt.Rows.Add(dr);
+                }
+
+
+                // On parcoure les colonnes de la table de données pour 
+                // définir le champ lié aux données de manière dynamique
+
+                foreach (DataColumn col in dt.Columns)
+                {
+                    // Déclarer le champ lié et allouer de la mémoire pour le champ lié
+                    BoundField bfield = new BoundField();
+
+                    // Initialise la valeur du champ de données.
+                    bfield.DataField = col.ColumnName;
+
+                    // Initialise la valeur du champ HeaderText.
+                    bfield.HeaderText = col.ColumnName;
+
+                    if (col.ColumnName == "Prix")
+                    {
+                        bfield.ItemStyle.HorizontalAlign = HorizontalAlign.Right;
+                    }
+                    else
+                    {
+                        if (col.ColumnName == "Image")
+                        {
+                            bfield.ItemStyle.HorizontalAlign = HorizontalAlign.Center;
+                        }
+                        else
+                        {
+                            bfield.ItemStyle.HorizontalAlign = HorizontalAlign.Left;
+                        }
+                    }
+
+                    // Ajoute le champ lié nouvellement créé au GridView.
+                    gvMenu.Columns.Add(bfield);
+
+                }
+
+
+                // Initialise la DataSource
+                gvMenu.DataSource = dt;
+
+                // Lie la table de données avec le GridView.
+
+                gvMenu.DataBind();
+                //if (this.Session[Site1.SESSION_IDMENU] != null)
+                //{
+
+            }
+
+        }
+
+        protected void btnAnnuler_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Default.aspx");
+        }
+
+
+        protected void btnAjouterMets_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/AjoutModifMets.aspx");
+        }
+
+        protected void lnkAccueil_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Default.aspx");
+        }
+
+        protected void lnkDeconnecter_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/EnConstruction.aspx");
+        }
+
+        protected void lnkGestionMenu_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/EnConstruction.aspx");
+        }
+
+        protected void btnModifierMets_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/EnConstruction.aspx");
+        }
+
+        protected void btnDesactiverMets_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/EnConstruction.aspx");
+        }
+
+        protected void ddlMenu_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Page_Load(sender, e);
+        }
+
+        protected List<menu_produits> chargementTable(String p_idMenu)
+        {
+            List<menu_produits> tableauRetour = new List<menu_produits>();
+            if (p_idMenu != "")
+            {
+                tableauRetour = BDResto.Instance.GetProduitsMenu(Convert.ToInt32(p_idMenu));
+            }
+
+            return tableauRetour;
+        }
+
+        protected void clearGridView(GridView p_GridView)
+        {
+            p_GridView.DataSource = null;
+            p_GridView.DataBind();
+            for (int i = 1; p_GridView.Columns.Count > i;)
+            {
+                p_GridView.Columns.RemoveAt(i);
+            }
+        }
+
+    }
 }

@@ -11,39 +11,30 @@
 		<asp:Label ID="lblTitreMenu" runat="server" Text="Titre du menu" Width="150px"></asp:Label>
 		
 		
-		 <asp:DropDownList ID="ddlTitre" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource2" DataTextField="titreMenu" DataValueField="titreMenu">
-		 </asp:DropDownList>
-		 <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [titreMenu] FROM [menus]"></asp:SqlDataSource>
+		 <asp:DropDownList ID="ddlMenu" runat="server" DataSourceID="SqlDataSource2" DataTextField="titreMenu" DataValueField="idMenu" AutoPostBack="True">
+         </asp:DropDownList>
+         <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [idMenu], [titreMenu] FROM [menus]"></asp:SqlDataSource>
 		
 		
 		 <br />
 		<br />
-		 <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" CellPadding="4" ForeColor="#333333" GridLines="None">
-			 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
-			 <Columns>
-				 <asp:BoundField DataField="nomProd" HeaderText="nomProd" SortExpression="nomProd" />
-				 <asp:BoundField DataField="descProd" HeaderText="descProd" SortExpression="descProd" />
-				 <asp:BoundField DataField="prixProd" HeaderText="prixProd" SortExpression="prixProd" />
-				 <asp:BoundField DataField="imgProd" HeaderText="imgProd" SortExpression="imgProd" />
-				 <asp:BoundField DataField="idMenu" HeaderText="idMenu" SortExpression="idMenu" />
-			 </Columns>
-		 	<EditRowStyle BackColor="#999999" />
-			 <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-			 <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-			 <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
-			 <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
-			 <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
-			 <SortedAscendingCellStyle BackColor="#E9E7E2" />
-			 <SortedAscendingHeaderStyle BackColor="#506C8C" />
-			 <SortedDescendingCellStyle BackColor="#FFFDF8" />
-			 <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
-		 </asp:GridView>
-		 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT produits.nomProd, produits.descProd, produits.prixProd, produits.imgProd, menu_produits.idMenu FROM menu_produits INNER JOIN produits ON menu_produits.idProduit = produits.idProduit WHERE (menu_produits.idMenu = @idMenu)">
-			 <SelectParameters>
-				 <asp:SessionParameter DefaultValue="" Name="idMenu" SessionField="ID_MENU" />
-			 </SelectParameters>
-		 </asp:SqlDataSource>
-		<br />
+        <asp:TextBox ID="txtMessage" runat="server" BorderStyle="None" ForeColor="Red" Width="647px"></asp:TextBox>
+        <asp:GridView ID="gvMenu" runat="server" AutoGenerateColumns="False" >
+            <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+            <Columns>
+                <asp:CommandField ButtonType="Image" SelectImageUrl="~/images/fleche.png" ShowSelectButton="True" />
+            </Columns>
+            <EditRowStyle BackColor="#999999" />
+            <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+            <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+            <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
+            <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
+            <SelectedRowStyle BackColor="#D5EAFF" Font-Bold="True" ForeColor="#333333" />
+            <SortedAscendingCellStyle BackColor="#E9E7E2" />
+            <SortedAscendingHeaderStyle BackColor="#506C8C" />
+            <SortedDescendingCellStyle BackColor="#FFFDF8" />
+            <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
+        </asp:GridView>
 			<fieldset class="gestionMets">
 				<legend> Gestions mets</legend>
 				<br />
