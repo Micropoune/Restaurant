@@ -5,38 +5,56 @@
     </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Contenu" runat="server">
 
+    <div>
 
-<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RestaurantConceptConnectionString %>" SelectCommand="SELECT [nomProd], [descProd], [prixProd], [imgProd] FROM [produits]"></asp:SqlDataSource>
+        <asp:Label ID="Label2" runat="server" Text="Client :"></asp:Label>
+        <asp:TextBox ID="txtNomClient" runat="server" BorderStyle="None" Width="809px"></asp:TextBox>
 
+    </div>
 
-    <br />
-    <asp:GridView ID="gv_Menu" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1">
-        <Columns>
-            <asp:BoundField DataField="nomProd" HeaderText="nomProd" SortExpression="nomProd" />
-            <asp:BoundField DataField="descProd" HeaderText="descProd" SortExpression="descProd" />
-            <asp:BoundField DataField="prixProd" HeaderText="prixProd" SortExpression="prixProd" />
-            <asp:BoundField DataField="imgProd" HeaderText="imgProd" SortExpression="imgProd" />
-        </Columns>
-    </asp:GridView>
-    <br />
-    
-
-<asp:Button ID="btn_Ajouter_au_Panier" runat="server" Text="Ajouter au panier" OnClick="Button3_Click" />
-
-
-<asp:Button ID="Button4" runat="server" Text="Retirer du panier" OnClick="Button3_Click" />
-    <br />
-    
-<asp:Label ID="Label1" runat="server" Text="Panier"></asp:Label>
-    <br />
-    <asp:GridView ID="gv_panier" runat="server" OnSelectedIndexChanged="GridView2_SelectedIndexChanged" AutoGenerateColumns="False">
-        <Columns>
+    <div>
+        <asp:TextBox ID="txtMessage" runat="server" BorderStyle="None" ForeColor="Red" Width="647px"></asp:TextBox>
+        <asp:GridView ID="gvPdtMenu" runat="server" AutoGenerateColumns="False" OnSelectedIndexChanged="gvPdtMenu_SelectedIndexChanged">
+            <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+            <Columns>
                 <asp:CommandField ButtonType="Image" SelectImageUrl="~/images/fleche.png" ShowSelectButton="True" />
             </Columns>
-    </asp:GridView>
+            <EditRowStyle BackColor="#999999" />
+            <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+            <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+            <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
+            <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
+            <SelectedRowStyle BackColor="#D5EAFF" Font-Bold="True" ForeColor="#333333" />
+            <SortedAscendingCellStyle BackColor="#E9E7E2" />
+            <SortedAscendingHeaderStyle BackColor="#506C8C" />
+            <SortedDescendingCellStyle BackColor="#FFFDF8" />
+            <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
+        </asp:GridView>
+    </div>
+
+<asp:Button ID="btnAjoutPanier" runat="server" Text="Ajouter au panier" OnClick="btnAjoutPanier_Click" />
+    <br />
+    <br />
+<asp:Label ID="Label1" runat="server" Text="Panier"></asp:Label>
 <br />
-    <asp:SqlDataSource ID="SqlDataSource2" runat="server"></asp:SqlDataSource>
+    <div>
+        <asp:TextBox ID="txtMessage2" runat="server" BorderStyle="None" ForeColor="Red" Width="647px"></asp:TextBox>
+        <asp:GridView ID="gvPanier" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" AutoGenerateColumns="False">
+			   <EditRowStyle BackColor="#999999" />
+            <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+            <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+            <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
+            <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
+            <SelectedRowStyle BackColor="#D5EAFF" Font-Bold="True" ForeColor="#333333" />
+            <SortedAscendingCellStyle BackColor="#E9E7E2" />
+            <SortedAscendingHeaderStyle BackColor="#506C8C" />
+            <SortedDescendingCellStyle BackColor="#FFFDF8" />
+            <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
+        </asp:GridView>
+
+    </div>
     <br />
 <asp:Button ID="Button1" runat="server" Text="Annuler" OnClick="Button1_Click" />
-<asp:Button ID="Button2" runat="server" Text="Valider" OnClick="Button2_Click" />
-    </asp:Content>
+<asp:Button ID="btnValider" runat="server" Text="Valider" OnClick="btnValider_Click" />
+    
+</asp:Content>

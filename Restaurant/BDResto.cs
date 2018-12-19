@@ -86,6 +86,17 @@ namespace Restaurant
 				u =>
 					(u.nomUtilisateur.Equals(p_NomUtilisateur)));
 		}
+		/// <summary>
+		/// Retourne l'ID adresse pour l'utilisateur dont l'ID est 
+		/// p_IDCompte, ou null s'il n'y en a aucun.
+		/// </summary>
+		/// <param name="p_Idcompte">Identifiant à rechercher</param>
+		/// <returns>Un compte ou null</returns>
+		public int GetAdrCompte(int p_IdCompte)
+		{
+			return (m_BD.comptes.SingleOrDefault(
+				u => (u.noCompte == p_IdCompte))).noAdrs;
+		}
 
 		#endregion
 
@@ -179,16 +190,32 @@ namespace Restaurant
             return m_BD.restaurants.SingleOrDefault(
                 u => (u.idResto == p_IdResto));
         }
-        #endregion
+		#endregion
 
-        #region Commande
-        /// <summary>
-        /// Retourne la commande dont l'ID est 
-        /// p_IDCommande, ou null s'il n'y en a aucun.
-        /// </summary>
-        /// <param name="p_Idcommande">Identifiant à rechercher</param>
-        /// <returns>Une commande ou null</returns>
-        public commandes GetCommande(int p_IdCommande)
+		#region Commande
+		// Ajoute une commande
+		public void ajouterCde(int p_idClt, int p_idMenu)
+		{
+			commandes cde = new commandes();
+			cde.datecommande = DateTime.Now.Date;
+			cde.idetat = 7;
+			cde.idModePaiement = 1;
+			cde.idMenu = p_idMenu;
+			cde.noClient = p_idClt;
+			cde.noAdrs = GetAdrCompte(p_idClt);
+			this.m_BD.commandes.InsertOnSubmit(cde);
+
+			;
+		}
+
+
+		/// <summary>
+		/// Retourne la commande dont l'ID est 
+		/// p_IDCommande, ou null s'il n'y en a aucun.
+		/// </summary>
+		/// <param name="p_Idcommande">Identifiant à rechercher</param>
+		/// <returns>Une commande ou null</returns>
+		public commandes GetCommande(int p_IdCommande)
         {
             return m_BD.commandes.SingleOrDefault(
                 u => (u.idCommande == p_IdCommande));
@@ -247,16 +274,37 @@ namespace Restaurant
                 // Provide for exceptions.
             }
         }
+		// Ajoute un produit à la commande
+		public void ajouterPdtCde(int p_idCde, int p_idPdt)
+		{
+			items_commande item = new items_commande();
+			item = GetItemCommande(p_idCde);
+
+			if (item != null)
+			{
+				item.qte += 1;
+				m_BD.SubmitChanges();
+			}
+			else
+			{
+				item.noCommande = p_idCde;
+				item.noProduit = p_idPdt;
+				item.qte = 1;
+				this.m_BD.items_commande.InsertOnSubmit(item);
+			}
 
 
-        #endregion
 
-        #region ItemsCommande
-        /// <summary>
-        /// Retourne la liste de tous les items de la commande
-        /// dont l'ID est p_noCde , ou null s'il n'y en a aucun. 
-        /// </summary>
-        public IQueryable<items_commande> GetAllItemsCommande(int p_noCde)
+		}
+
+		#endregion
+
+		#region ItemsCommande
+		/// <summary>
+		/// Retourne la liste de tous les items de la commande
+		/// dont l'ID est p_noCde , ou null s'il n'y en a aucun. 
+		/// </summary>
+		public IQueryable<items_commande> GetAllItemsCommande(int p_noCde)
         {
             var listeItem = ((from element in m_BD.items_commande
                              where element.noCommande == p_noCde
@@ -265,15 +313,26 @@ namespace Restaurant
             return (IQueryable<items_commande>) listeItem;
         }
 
+		/// <summary>
+		/// Retourne le produit d'une commande
+		/// dont l'ID est p_noCde , ou null s'il n'y en a aucun. 
+		/// </summary>
+		public items_commande GetItemCommande(int p_noCde)
+		{
+			return m_BD.items_commande.SingleOrDefault(
+				u => (u.noCommande == p_noCde));
 
-        #endregion
+		}
 
-        #region Produits
-        /// <summary>
-        /// Retourne la liste de tous les produits
-        /// dont l'ID est passé en paramètre. 
-        /// </summary>
-        public IQueryable<produits> GetAllProduits()
+
+		#endregion
+
+		#region Produits
+		/// <summary>
+		/// Retourne la liste de tous les produits
+		/// dont l'ID est passé en paramètre. 
+		/// </summary>
+		public IQueryable<produits> GetAllProduits()
         {
             return m_BD.produits;
         }
