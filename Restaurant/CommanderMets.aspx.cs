@@ -251,18 +251,25 @@ namespace Restaurant
         protected void btnAjoutPanier_Click(object sender, EventArgs e)
         {
             produits pdt = new produits();
-            pdt = BDResto.Instance.GetProduit(Convert.ToInt32(this.gvPdtMenu.SelectedRow.Cells[1].Text));
-            this.panier.Add(pdt);
+			pdt = BDResto.Instance.GetProduit(Convert.ToInt32(this.Session[Site1.SESSION_IDPRODUIT]));
+			this.panier.Add(pdt);
             Page_Load(sender, e);
             //BDResto.Instance.ajouterPdtCde(Convert.ToInt32(this.Session[Site1.SESSION_IDCOMMANDE]), Convert.ToInt32(this.Session[Site1.SESSION_IDPRODUIT]));
             //BDResto.Instance.Sauvegarder();
             //Page_Load(sender, e);
         }
 
-        protected void btnValider_Click(object sender, EventArgs e)
-        {
-
-        }
+		protected void btnValider_Click(object sender, EventArgs e)
+		{
+			int noCommande=BDResto.Instance.ajouterCde(Convert.ToInt32(Session[Site1.SESSION_IDUTILISATEURCONNECTE]), Convert.ToInt32(Session[Site1.SESSION_IDMENU]));
+			this.panier=BDResto.Instance.GetAllItemsCommande(noCommande);
+			foreach (produits item in this.panier)
+			{
+				BDResto.Instance.ajouterPdtCde(noCommande, item.idProduit);
+			}
+				
+			BDResto.Instance.Sauvegarder();
+		}
 
         protected void gvPdtMenu_SelectedIndexChanged(object sender, EventArgs e)
         {

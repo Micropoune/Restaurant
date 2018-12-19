@@ -194,7 +194,7 @@ namespace Restaurant
 
 		#region Commande
 		// Ajoute une commande
-		public void ajouterCde(int p_idClt, int p_idMenu)
+		public int ajouterCde(int p_idClt, int p_idMenu)
 		{
 			commandes cde = new commandes();
 			cde.datecommande = DateTime.Now.Date;
@@ -205,9 +205,15 @@ namespace Restaurant
 			cde.noAdrs = GetAdrCompte(p_idClt);
 			this.m_BD.commandes.InsertOnSubmit(cde);
 
+			return (m_BD.commandes.OrderByDescending(u => u.idCommande).FirstOrDefault().idCommande);
 			;
 		}
 
+		public void ajouterRestaurant(restaurants p_Resto)
+		{
+			Debug.Assert((p_Resto != null), "p_Resto doit être différent de null");
+			this.m_BD.restaurants.InsertOnSubmit(p_Resto);
+		}
 
 		/// <summary>
 		/// Retourne la commande dont l'ID est 
